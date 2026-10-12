@@ -1135,6 +1135,15 @@ body:hover .controls,.controls:focus-within{opacity:1}.controls button{backgroun
 .s-theory .terms{bottom:12%}.s-theory .definition span{display:block}
 @media(max-aspect-ratio:6/5){.s-theory .terms{bottom:20%}.s-theory .definition span{display:inline}}
 @media(max-width:650px) and (orientation:portrait){.s-theory .terms{bottom:14%}}
+
+/* A quiet entrance on each page change; the paper grid stays stationary. */
+.slide{transition:none}
+.slide.active{animation:slide-enter 380ms cubic-bezier(.22,.61,.36,1) both}
+@keyframes slide-enter{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){.slide.active{animation:none}}
 </style></head><body><div class="deck"><main class="stage" aria-label="生态翻译学，十八页课堂演示">
 <section class="slide active s-cover" aria-label="封面"><header class="running"><span>生态翻译学</span></header><div class="cover-copy"><h1>生态翻译学</h1><p class="english" lang="en">Eco-translatology</p></div><div class="pixel-note" aria-hidden="true"></div><p class="cover-kicker">环境 · 适应 · 选择</p><footer class="running-foot"><span></span><span class="folio">01 <span class="slash">/</span> 18</span></footer></section>
 <section class="slide s-example" aria-label="同一句话，不同的翻译"><header class="running"><span>生态翻译学</span></header><h2 class="page-heading">同一句话，为什么有不同的翻译？</h2><div class="example-layout"><div class="source-phrase"><p class="language-label">同一句话</p><p class="korean" lang="ko">잘 부탁드립니다.</p></div><div class="situations"><div><p class="context-label">初次见面 ／ 新员工向同事介绍自己</p><p class="translation">今后请大家多多关照。</p></div><div><p class="context-label">请人帮忙 ／ 委托别人处理事情</p><p class="translation">这件事就拜托您了。</p></div></div></div><p class="takeaway">翻译选择，与使用环境有关。</p><footer class="running-foot"><span></span><span class="folio">02 <span class="slash">/</span> 18</span></footer></section>
