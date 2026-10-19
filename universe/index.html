@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050915">
+  <meta name="description" content="유상호的个人知识星系：学术发表、视觉作品与研究资料。">
+  <title>YOO SANGHO · 个人知识星系</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="identity" href="#orbit" aria-label="返回个人知识星系首页">
+      <span class="identity-mark">YS</span>
+      <span><b>YOO SANGHO</b><small>ORBITAL ARCHIVE · 2026</small></span>
+    </a>
+    <nav class="header-actions" aria-label="页面工具">
+      <button class="quiet-button" id="motionToggle" type="button" aria-pressed="false">暂停轨道</button>
+      <button class="list-button" id="listToggle" type="button" aria-expanded="false" aria-controls="catalogue">项目列表</button>
+    </nav>
+  </header>
+
+  <main id="orbit" class="orbit-stage" aria-label="个人知识星系">
+    <div class="orbit-copy">
+      <p class="eyebrow">A LIVING INDEX</p>
+      <h1>让每一项研究<br>成为一颗可以抵达的星球</h1>
+      <p class="orbit-intro">这里收纳我关于景观、生态、翻译与公共空间的学习轨迹。选择一颗行星，进入它的地表。</p>
+    </div>
+
+    <div class="system" id="system" aria-label="环绕恒星的四个内容星球">
+      <div class="orbit-ring ring-1" aria-hidden="true"></div>
+      <div class="orbit-ring ring-2" aria-hidden="true"></div>
+      <div class="orbit-ring ring-3" aria-hidden="true"></div>
+      <div class="orbit-ring ring-4" aria-hidden="true"></div>
+
+      <div class="star" aria-label="个人知识星系的中心恒星">
+        <span class="star-core"></span>
+        <span class="star-name">유상호</span>
+        <span class="star-sub">knowledge in orbit</span>
+      </div>
+
+      <div class="planet-orbit orbit-1" style="--start:-18deg;--duration:38s">
+        <button class="planet planet-about" type="button" data-world="about" aria-label="进入个人简介星球">
+          <span class="planet-face"><i></i></span>
+          <span class="planet-label"><b>自述</b><small>ORIGIN</small></span>
+        </button>
+      </div>
+      <div class="planet-orbit orbit-2" style="--start:112deg;--duration:52s">
+        <button class="planet planet-academic" type="button" data-world="academic" aria-label="进入学术发表星球">
+          <span class="planet-face"><i></i></span>
+          <span class="planet-label"><b>学术发表</b><small>CANOPY</small></span>
+        </button>
+      </div>
+      <div class="planet-orbit orbit-3" style="--start:208deg;--duration:67s">
+        <button class="planet planet-portfolio" type="button" data-world="portfolio" aria-label="进入视觉作品星球">
+          <span class="planet-face"><i></i></span>
+          <span class="planet-label"><b>视觉作品</b><small>BLOOM</small></span>
+        </button>
+      </div>
+      <div class="planet-orbit orbit-4" style="--start:302deg;--duration:83s">
+        <button class="planet planet-archive" type="button" data-world="archive" aria-label="进入研究资料星球">
+          <span class="planet-face"><i></i></span>
+          <span class="planet-label"><b>研究资料</b><small>STRATA</small></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="orbit-guide" aria-hidden="true">
+      <span>01 — 选择行星</span><span>02 — 进入地表</span><span>03 — 打开生长节点</span>
+    </div>
+  </main>
+
+  <aside class="catalogue" id="catalogue" aria-hidden="true">
+    <div class="catalogue-head">
+      <div><p class="eyebrow">DIRECT ACCESS</p><h2>项目列表</h2></div>
+      <button class="icon-button" id="listClose" type="button" aria-label="关闭项目列表">×</button>
+    </div>
+    <p class="catalogue-note">不想等待行星转过来时，可以从这里直接进入。</p>
+    <section>
+      <p class="catalogue-index">01 · 学术发表</p>
+      <button class="catalogue-item" type="button" data-artifact="eco">
+        <span>生态翻译学</span><small>HTML演示 · 中文发表稿</small>
+      </button>
+      <button class="catalogue-item" type="button" data-artifact="green">
+        <span>绿地类型与健康老龄化</span><small>韩语演示 · 韩语发表稿</small>
+      </button>
+    </section>
+    <section>
+      <p class="catalogue-index">02 · 正在生长</p>
+      <button class="catalogue-item" type="button" data-artifact="sensory">
+        <span>多感官公共空间</span><small>作品集研究 · 整理中</small>
+      </button>
+    </section>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <section class="surface-shell" id="surfaceShell" aria-hidden="true">
+    <header class="surface-header">
+      <button class="return-button" id="returnOrbit" type="button"><span>←</span> 返回轨道</button>
+      <div class="surface-coordinate"><span id="worldCode">CANOPY–02</span><small>planetary surface</small></div>
+    </header>
+
+    <div class="world world-about" data-world-panel="about" aria-hidden="true">
+      <div class="sky-copy"><p class="eyebrow">ORIGIN · 自述</p><h2>我从环境开始，<br>寻找人与场所的关系。</h2><p>学习与创作横跨景观、生态、健康城市、翻译和公共空间。这里不是一份固定简历，而是一片会继续生长的起点。</p></div>
+      <div class="horizon horizon-about" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="organism observatory" type="button" data-artifact="profile"><span class="dome"></span><span class="beam"></span><b>个人坐标</b><small>ABOUT · PROFILE</small></button>
+    </div>
+
+    <div class="world world-academic" data-world-panel="academic" aria-hidden="true">
+      <div class="sky-copy"><p class="eyebrow">CANOPY · 学术发表</p><h2>在林间，<br>寻找研究的线索。</h2><p>树旁的标记对应研究主题，点击可查看演示、发表稿与相关材料。</p></div>
+      <div class="horizon horizon-academic" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="organism tree tree-eco" type="button" data-artifact="eco" aria-label="打开生态翻译学项目">
+        <span class="tree-crown crown-a"></span><span class="tree-crown crown-b"></span><span class="tree-crown crown-c"></span><span class="tree-trunk"></span>
+        <span class="node-line"></span><b>生态翻译学</b><small>2026 · THEORY</small>
+      </button>
+      <button class="organism tree tree-green" type="button" data-artifact="green" aria-label="打开绿地类型与健康老龄化项目">
+        <span class="tree-crown crown-a"></span><span class="tree-crown crown-b"></span><span class="tree-crown crown-c"></span><span class="tree-trunk"></span>
+        <span class="node-line"></span><b>绿地类型与健康老龄化</b><small>2026 · PAPER REVIEW</small>
+      </button>
+      <button class="organism seed seed-new" type="button" data-artifact="future" aria-label="查看下一项研究占位">
+        <span></span><b>下一项研究</b><small>GROWING</small>
+      </button>
+    </div>
+
+    <div class="world world-portfolio" data-world-panel="portfolio" aria-hidden="true">
+      <div class="sky-copy"><p class="eyebrow">BLOOM · 视觉作品</p><h2>感官经验<br>以不同形态开花。</h2><p>照片、声音、气味与身体经验，被整理成可以观看和讨论的空间提案。</p></div>
+      <div class="horizon horizon-portfolio" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="organism flower flower-main" type="button" data-artifact="sensory"><span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span><span class="flower-core"></span><span class="stem"></span><b>多感官公共空间</b><small>PORTFOLIO · GROWING</small></button>
+      <button class="organism flower flower-small" type="button" data-artifact="future"><span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span><span class="flower-core"></span><span class="stem"></span><b>下一次开花</b><small>COMING LATER</small></button>
+    </div>
+
+    <div class="world world-archive" data-world-panel="archive" aria-hidden="true">
+      <div class="sky-copy"><p class="eyebrow">STRATA · 研究资料</p><h2>材料沉积下来，<br>形成下一次研究的地层。</h2><p>讲稿与演示在这里形成索引。之后可以继续加入论文、图表、笔记和参考资料。</p></div>
+      <div class="horizon horizon-archive" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button class="organism crystal crystal-a" type="button" data-artifact="eco"><span></span><span></span><b>生态翻译学资料</b><small>SLIDES · SCRIPT</small></button>
+      <button class="organism crystal crystal-b" type="button" data-artifact="green"><span></span><span></span><b>健康老龄化资料</b><small>SLIDES · SCRIPT</small></button>
+    </div>
+
+    <div class="surface-legend"><span><i></i> 可点击的生长节点</span><small>拖动或滚动不影响地表，直接点击节点即可</small></div>
+  </section>
+
+  <dialog class="artifact-panel" id="artifactPanel">
+    <button class="icon-button panel-close" id="artifactClose" type="button" aria-label="关闭项目详情">×</button>
+    <p class="artifact-type" id="artifactType">ACADEMIC PROJECT</p>
+    <h2 id="artifactTitle">项目名称</h2>
+    <p class="artifact-meta" id="artifactMeta">2026 · HTML</p>
+    <p class="artifact-description" id="artifactDescription"></p>
+    <div class="artifact-links" id="artifactLinks"></div>
+    <p class="artifact-foot">节点会随着新的内容继续生长。</p>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
