@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11110f">
+  <title>녹지 유형과 건강한 노화｜유상호</title>
+  <style>
+    /* === LOCAL KOREAN FONTS === */
+    @font-face{font-family:"Noto Sans KR";src:url("assets/fonts/NotoSansKR-VF.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+    @font-face{font-family:"Noto Serif KR";src:url("assets/fonts/NotoSerifKR-VF.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+
+    /* === DESIGN TOKENS === */
+    :root{
+      --paper:#f1eee6;--paper-2:#e7e8df;--ink:#11110f;--green:#739d59;--forest:#163c2c;
+      --sage:#c7d2c2;--line:#c8c6bd;--muted:#6f716c;--white:#fbfaf6;
+      --font-display:"Noto Serif KR","Batang",serif;--font-body:"Noto Sans KR","Malgun Gothic",sans-serif;
+      --title-size:clamp(2rem,5vw,4.7rem);--h2-size:clamp(1.45rem,3.3vw,3rem);--h3-size:clamp(.95rem,1.55vw,1.4rem);
+      --body-size:clamp(.72rem,1.18vw,1.08rem);--small-size:clamp(.58rem,.85vw,.8rem);
+      --slide-padding:clamp(1.2rem,4.4vw,4.7rem);--content-gap:clamp(.65rem,2vw,2rem);--element-gap:clamp(.3rem,1vw,1rem);
+      --ease:cubic-bezier(.16,1,.3,1);--duration:.62s;
+    }
+    *{box-sizing:border-box}
+    html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--ink)}
+    body{margin:0;font-family:var(--font-body);background:var(--ink);color:var(--ink);overflow-x:hidden}
+    body,button{font-family:var(--font-body)}
+    .slide{position:relative;width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;background:var(--paper)}
+    .slide-content{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;max-height:100%;overflow:hidden;padding:var(--slide-padding)}
+    .card,.container,.content-box{max-width:min(90vw,1000px);max-height:min(80vh,700px)}
+    img,.image-container{max-width:100%;max-height:min(50vh,400px);object-fit:contain}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(.5rem,1.5vw,1rem)}
+    .bullet-list{display:flex;flex-direction:column;gap:clamp(.4rem,1vh,1rem)}
+    .bullet-list li{font-size:var(--body-size);line-height:1.55}
+    h1,h2,h3,p{margin:0} h1,h2,h3{word-break:keep-all;line-height:1.18} p,li,td,th{word-break:keep-all;overflow-wrap:normal}
+    h1{font-family:var(--font-display);font-size:var(--title-size);font-weight:520;letter-spacing:-.045em}
+    h2{font-size:var(--h2-size);font-weight:760;letter-spacing:-.045em}
+    h3{font-size:var(--h3-size);font-weight:730}
+    p{font-size:var(--body-size);line-height:1.68}
+    .en{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+    .mono{font-family:"Courier New",monospace;letter-spacing:.04em}
+
+    /* === SHARED SLIDE CHROME === */
+    .rule{height:clamp(2px,.3vw,5px);background:var(--forest);position:absolute;left:var(--slide-padding);right:var(--slide-padding);top:clamp(1rem,4.5vh,3rem)}
+    .kicker{position:absolute;left:var(--slide-padding);top:clamp(1.55rem,7vh,4.5rem);font-size:var(--small-size);font-weight:720;color:var(--forest);letter-spacing:.06em;text-transform:uppercase}
+    .folio{position:absolute;right:var(--slide-padding);bottom:clamp(.8rem,2.5vh,1.6rem);font-size:var(--small-size);color:var(--muted);font-variant-numeric:tabular-nums}
+    .source{position:absolute;left:var(--slide-padding);bottom:clamp(.8rem,2.5vh,1.6rem);max-width:68vw;font-size:clamp(.5rem,.68vw,.67rem);line-height:1.35;color:#85877f}
+    .headline{margin-top:clamp(2rem,5vh,4.5rem);max-width:86vw}
+    .headline small{display:block;font-size:var(--small-size);color:var(--green);letter-spacing:.08em;margin-bottom:clamp(.45rem,1vh,.9rem)}
+    .accent{color:var(--green)} .muted{color:var(--muted)} .strong{font-weight:780}
+    .pill{display:inline-flex;align-items:center;border:1px solid currentColor;padding:.3em .62em;font-size:var(--small-size);font-weight:700;letter-spacing:.03em}
+    .keyline{height:1px;background:var(--line);width:100%}
+    .takeaway{margin-top:clamp(.5rem,1.4vh,1rem);padding:clamp(.65rem,1.5vw,1rem) clamp(.8rem,1.8vw,1.25rem);border-left:clamp(4px,.5vw,7px) solid var(--green);background:rgba(255,255,255,.4);font-size:var(--body-size);line-height:1.55}
+
+    /* === ANIMATION === */
+    .reveal{opacity:0;transform:translateY(clamp(10px,2vh,26px));transition:opacity var(--duration) var(--ease),transform var(--duration) var(--ease)}
+    .visible .reveal{opacity:1;transform:none}.reveal:nth-child(2){transition-delay:.07s}.reveal:nth-child(3){transition-delay:.14s}.reveal:nth-child(4){transition-delay:.21s}.reveal:nth-child(5){transition-delay:.28s}
+
+    /* === COVER: SELECTED OPTION 05 === */
+    .cover{display:grid;grid-template-columns:63% 37%;background:var(--paper)}
+    .cover-left{position:relative;padding:clamp(2rem,5.5vw,5.6rem);display:flex;flex-direction:column;justify-content:center}
+    .cover-meta{position:absolute;top:clamp(1.5rem,6vh,4rem);font-size:var(--small-size);font-weight:700;color:#65655f;letter-spacing:.04em}
+    .cover h1{max-width:92%;font-size:clamp(2.1rem,5vw,5.1rem)}
+    .cover-sub{font-family:var(--font-display);margin-top:clamp(.6rem,1.6vh,1.3rem);font-size:clamp(1rem,2vw,1.85rem);color:#55564f;line-height:1.45}
+    .cover-en{margin-top:clamp(2.2rem,7vh,5rem);font-size:clamp(.75rem,1.45vw,1.25rem);line-height:1.45;max-width:78%}
+    .presenter{margin-top:auto;font-size:clamp(.8rem,1.35vw,1.2rem);font-weight:760}
+    .cover-right{background:var(--ink);color:var(--white);position:relative;padding:clamp(2rem,5vw,5rem);display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+    .cover-right .label{font-size:clamp(1.5rem,3.7vw,3.8rem);line-height:1.05;font-weight:780;letter-spacing:-.035em}
+    .cover-right .stat{margin-top:auto;color:var(--green);font-family:var(--font-display);font-size:clamp(5rem,12vw,12rem);line-height:.8;font-weight:370}
+    .cover-right .stat sup{font-family:var(--font-body);font-size:.3em;font-weight:800}
+    .cover-right .citation{margin-top:auto;font-size:var(--small-size);line-height:1.45;color:#aaa9a3;max-width:94%}
+
+    /* === INDEX === */
+    .agenda{display:grid;grid-template-columns:42% 58%;height:100%}
+    .agenda-left{background:var(--ink);color:var(--white);padding:var(--slide-padding);display:flex;flex-direction:column;justify-content:center}
+    .agenda-left b{font-family:var(--font-display);font-size:clamp(5rem,16vw,14rem);font-weight:300;line-height:.75;color:var(--green)}
+    .agenda-right{padding:clamp(2rem,5vw,5rem);display:flex;flex-direction:column;justify-content:center}
+    .question-list{margin-top:clamp(1rem,3vh,2rem);display:grid;gap:clamp(.35rem,1vh,.8rem)}
+    .question{display:grid;grid-template-columns:clamp(1.6rem,3vw,2.8rem) 1fr;align-items:baseline;border-top:1px solid var(--line);padding-top:clamp(.35rem,.9vh,.75rem)}
+    .question span{font-size:var(--small-size);color:var(--green);font-weight:800}.question p{font-size:clamp(.7rem,1.05vw,1rem);line-height:1.4;font-weight:620}
+
+    /* === GENERAL LAYOUTS === */
+    .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1rem,4vw,4rem);align-items:center;margin-top:clamp(1.1rem,3vh,2.5rem)}
+    .two-col.wide-left{grid-template-columns:1.25fr .75fr}.two-col.wide-right{grid-template-columns:.8fr 1.2fr}
+    .paper-box{background:rgba(255,255,255,.46);border:1px solid var(--line);padding:clamp(.75rem,1.8vw,1.5rem)}
+    .ink-box{background:var(--ink);color:var(--white);padding:clamp(.85rem,2vw,1.7rem)}
+    .number{font-family:var(--font-display);font-size:clamp(3.2rem,9vw,8.5rem);line-height:.86;color:var(--green);font-weight:350}
+    .number-label{font-size:var(--small-size);font-weight:760;color:var(--muted);margin-top:.55rem;letter-spacing:.03em}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.55rem,1.5vw,1.3rem);margin-top:clamp(1rem,3vh,2.4rem)}
+    .stat-card{border-top:clamp(3px,.35vw,5px) solid var(--ink);padding-top:clamp(.55rem,1.5vh,1rem)}
+    .stat-card b{display:block;font-family:var(--font-display);font-size:clamp(2rem,4.6vw,4.5rem);font-weight:410;line-height:1;color:var(--forest)}
+    .stat-card span{display:block;font-size:var(--small-size);line-height:1.45;margin-top:.45rem;color:var(--muted)}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.55rem,1.4vw,1.2rem);margin-top:clamp(1rem,3vh,2.2rem)}
+    .mini-card{border:1px solid var(--line);padding:clamp(.75rem,1.6vw,1.35rem);background:rgba(255,255,255,.35);min-height:clamp(7rem,20vh,12rem)}
+    .mini-card .idx{font-size:var(--small-size);font-weight:800;color:var(--green)}
+    .mini-card h3{margin-top:.45rem}.mini-card p{margin-top:.55rem;font-size:clamp(.65rem,1vw,.92rem);line-height:1.55;color:#555851}
+
+    /* === SECTION DIVIDERS === */
+    .divider{background:var(--ink);color:var(--white)}
+    .divider .slide-content{justify-content:flex-end;padding-bottom:clamp(2.4rem,8vh,6.5rem)}
+    .divider .ghost{position:absolute;right:clamp(1rem,5vw,5rem);top:clamp(1rem,3vh,2rem);font-family:var(--font-display);font-size:clamp(9rem,31vw,28rem);line-height:.8;color:rgba(115,157,89,.22);font-weight:250}
+    .divider h2{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,6rem);font-weight:420;max-width:76%;letter-spacing:-.05em}
+    .divider p{margin-top:clamp(.8rem,2vh,1.4rem);max-width:60%;color:#bbbcb6}
+
+    /* === CONCEPT DIAGRAMS === */
+    .formula{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:clamp(.35rem,1.3vw,1rem);margin-top:clamp(1.4rem,4vh,3.5rem)}
+    .formula-box{min-height:clamp(8rem,27vh,15rem);padding:clamp(.8rem,2vw,1.7rem);display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);background:rgba(255,255,255,.42)}
+    .formula-box.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+    .formula-box strong{font-family:var(--font-display);font-size:clamp(1.2rem,2.5vw,2.3rem);font-weight:550}.formula-box p{font-size:clamp(.62rem,.95vw,.9rem);line-height:1.5;color:var(--muted)}.formula-box.dark p{color:#b8bbb3}
+    .op{font-size:clamp(1.3rem,3vw,2.5rem);color:var(--green);font-weight:300}
+    .pathways{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(.35rem,.8vw,.75rem);margin-top:clamp(1.2rem,4vh,3rem)}
+    .path{position:relative;padding:clamp(.65rem,1.4vw,1.2rem);border-top:clamp(4px,.5vw,7px) solid var(--green);background:rgba(255,255,255,.4);min-height:clamp(7rem,22vh,12rem)}
+    .path b{font-size:clamp(.8rem,1.25vw,1.13rem)}.path p{font-size:clamp(.58rem,.88vw,.82rem);margin-top:.45rem;line-height:1.45;color:var(--muted)}
+    .place-ring{width:min(34vh,25vw);aspect-ratio:1;border:1px solid var(--green);border-radius:50%;display:grid;place-items:center;position:relative;margin:auto}
+    .place-ring:before,.place-ring:after{content:"";position:absolute;border:1px solid var(--sage);border-radius:50%}.place-ring:before{inset:14%}.place-ring:after{inset:30%;background:var(--forest)}
+    .place-ring strong{position:relative;z-index:1;color:var(--white);font-size:clamp(.7rem,1.2vw,1rem);text-align:center}
+
+    /* === METHODS === */
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);margin-top:clamp(1.2rem,4vh,3.2rem);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+    .flow-item{padding:clamp(.65rem,1.4vw,1.25rem);border-right:1px solid var(--line);min-height:clamp(7rem,21vh,11rem)}.flow-item:last-child{border-right:0}
+    .flow-item b{display:block;color:var(--green);font-size:var(--small-size)}.flow-item h3{margin-top:.45rem;font-size:clamp(.78rem,1.25vw,1.15rem)}.flow-item p{margin-top:.45rem;font-size:clamp(.56rem,.82vw,.78rem);line-height:1.48;color:var(--muted)}
+    .sample-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:clamp(.4rem,1vw,.8rem);align-items:center;margin-top:clamp(1.2rem,4vh,3rem)}
+    .sample-node{border:1px solid var(--line);padding:clamp(.75rem,1.8vw,1.5rem);text-align:center;background:rgba(255,255,255,.4)}
+    .sample-node b{display:block;font-family:var(--font-display);font-size:clamp(2rem,5vw,4.5rem);font-weight:420;color:var(--forest)}.sample-node span{font-size:var(--small-size);color:var(--muted)}
+    .arrow{font-size:clamp(1.2rem,2.5vw,2.2rem);color:var(--green)}
+    .buffer{position:relative;width:min(47vh,36vw);aspect-ratio:1;margin:auto;border-radius:50%;background:repeating-radial-gradient(circle,rgba(115,157,89,.13) 0 16%,rgba(115,157,89,.03) 16% 32%);border:2px solid var(--green);display:grid;place-items:center}
+    .buffer:before{content:"";width:12%;aspect-ratio:1;border-radius:50%;background:var(--ink);box-shadow:0 0 0 8px var(--paper)}.buffer-label{position:absolute;top:7%;right:7%;font-size:var(--small-size);font-weight:800;color:var(--forest)}
+    .type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.5vw,1.25rem);margin-top:clamp(1rem,3vh,2.4rem)}
+    .type-card{position:relative;min-height:clamp(12rem,39vh,22rem);padding:clamp(.8rem,1.7vw,1.5rem);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border:1px solid var(--line)}
+    .type-card:before{content:"";position:absolute;inset:0 0 43% 0;background:var(--tone);opacity:.95}.type-card:nth-child(1){--tone:#b9cf78}.type-card:nth-child(2){--tone:#8caa7b}.type-card:nth-child(3){--tone:#214936}
+    .type-card .pattern{position:absolute;inset:6% 8% auto auto;width:43%;aspect-ratio:1;border-radius:50%;border:clamp(8px,1.2vw,18px) solid rgba(255,255,255,.42)}
+    .type-card h3,.type-card p{position:relative}.type-card p{font-size:clamp(.58rem,.88vw,.82rem);line-height:1.48;color:var(--muted);margin-top:.4rem}
+    .score-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,1.8rem);margin-top:clamp(1rem,3vh,2rem)}
+    .score-panel{padding:clamp(.8rem,2vw,1.6rem);border:1px solid var(--line);background:rgba(255,255,255,.4)}
+    .score-panel ul{margin:.65rem 0 0;padding-left:1.2em;font-size:clamp(.62rem,.94vw,.88rem);line-height:1.65}.score-total{display:flex;align-items:baseline;gap:.4rem;margin-top:.65rem}.score-total b{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:370;color:var(--green)}
+    .model-stack{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.5rem,1.3vw,1rem);margin-top:clamp(1rem,3vh,2rem)}
+    .model-level{padding:clamp(.8rem,1.7vw,1.35rem);background:var(--ink);color:var(--white);min-height:clamp(7rem,21vh,11rem)}.model-level b{font-size:var(--small-size);color:var(--green)}.model-level h3{margin-top:.45rem}.model-level p{margin-top:.45rem;color:#bdbeb8;font-size:clamp(.58rem,.86vw,.82rem);line-height:1.5}
+
+    /* === RESULTS === */
+    .result-band{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(1rem,3vh,2.2rem);border:1px solid var(--ink)}
+    .result-cell{padding:clamp(.8rem,1.8vw,1.5rem);min-height:clamp(11rem,35vh,19rem);border-right:1px solid var(--ink);display:flex;flex-direction:column}.result-cell:last-child{border-right:0}.result-cell.best{background:var(--ink);color:var(--white)}
+    .result-cell .sign{font-family:var(--font-display);font-size:clamp(3.5rem,8vw,7rem);line-height:.8;color:var(--green)}.result-cell h3{margin-top:auto}.result-cell p{font-size:clamp(.59rem,.88vw,.82rem);line-height:1.5;margin-top:.45rem;color:var(--muted)}.result-cell.best p{color:#bbbcb7}
+    .bar-chart{margin-top:clamp(1rem,3vh,2rem);display:grid;gap:clamp(.55rem,1.4vh,1rem)}
+    .bar-row{display:grid;grid-template-columns:clamp(4.2rem,9vw,8rem) 1fr clamp(2.8rem,6vw,5rem);align-items:center;gap:clamp(.45rem,1vw,.9rem)}.bar-label{font-size:var(--small-size);font-weight:700}.bar-track{height:clamp(1.4rem,4vh,2.6rem);background:#ddddd5;position:relative}.bar{height:100%;width:calc(var(--v)*1%);background:var(--green);transform-origin:left}.bar-row:last-child .bar{background:var(--forest)}.bar-value{font-family:var(--font-display);font-size:clamp(1.1rem,2.2vw,1.9rem);font-weight:500}
+    .coeffs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.5vw,1.2rem);margin-top:clamp(1rem,3vh,2.1rem)}
+    .coef{padding:clamp(.8rem,1.7vw,1.5rem);background:var(--ink);color:var(--white)}.coef b{display:block;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4.6rem);font-weight:370;color:var(--green)}.coef span{font-size:var(--small-size);font-weight:750}.coef p{font-size:clamp(.55rem,.8vw,.76rem);line-height:1.45;color:#b8b9b3;margin-top:.45rem}
+    .neg-chart{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,2rem);margin-top:clamp(1rem,3vh,2rem)}
+    .neg-panel{border:1px solid var(--line);padding:clamp(.8rem,1.7vw,1.5rem)}.neg-panel h3{margin-bottom:.7rem}.neg-item{display:grid;grid-template-columns:clamp(4rem,8vw,7rem) 1fr clamp(2.4rem,5vw,4rem);align-items:center;gap:.5rem;margin:.55rem 0;font-size:var(--small-size)}.neg-track{height:clamp(.8rem,2vh,1.25rem);background:#dddcd4;display:flex;justify-content:flex-end}.neg-bar{height:100%;width:calc(var(--v)*1%);background:#777b72}.pos-bar{height:100%;width:calc(var(--v)*1%);background:var(--green)}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,1.8rem);margin-top:clamp(1rem,3vh,2rem)}
+    .compare-side{padding:clamp(.9rem,2vw,1.7rem);border:1px solid var(--ink);min-height:clamp(12rem,38vh,21rem)}.compare-side.dark{background:var(--ink);color:var(--white)}.compare-side .big{font-family:var(--font-display);font-size:clamp(2.6rem,6.5vw,6rem);color:var(--green);line-height:.9}.compare-side ul{padding-left:1.1em;margin:.9rem 0 0;font-size:clamp(.62rem,.96vw,.9rem);line-height:1.7}.compare-side.dark li{color:#d0d1cb}
+
+    /* === CRITIQUE / IMPLICATIONS === */
+    .balance{display:grid;grid-template-columns:1fr 1fr;gap:clamp(.8rem,2vw,1.7rem);margin-top:clamp(1rem,3vh,2rem)}
+    .balance-panel{padding:clamp(.8rem,1.8vw,1.5rem);border-top:clamp(5px,.6vw,8px) solid var(--green)}.balance-panel.dark{background:var(--ink);color:var(--white)}.balance-panel ul{padding-left:1.1em;margin:.7rem 0 0;font-size:clamp(.61rem,.92vw,.86rem);line-height:1.65}.balance-panel li+li{margin-top:.35rem}
+    .implications{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.6rem,1.4vw,1.1rem);margin-top:clamp(1rem,3vh,2rem)}
+    .implication{padding:clamp(.85rem,1.7vw,1.45rem);background:var(--ink);color:var(--white);min-height:clamp(11rem,34vh,18rem);display:flex;flex-direction:column}.implication .n{font-family:var(--font-display);font-size:clamp(2.6rem,6vw,5.4rem);line-height:.8;color:var(--green)}.implication h3{margin-top:auto}.implication p{margin-top:.45rem;font-size:clamp(.58rem,.85vw,.8rem);line-height:1.5;color:#bdbeb8}
+    .closing{background:var(--paper);display:grid;grid-template-columns:61% 39%}.closing-left{padding:var(--slide-padding);display:flex;flex-direction:column;justify-content:center}.closing-right{background:var(--ink);color:var(--white);padding:var(--slide-padding);display:flex;flex-direction:column;justify-content:center}.closing h2{font-family:var(--font-display);font-weight:430;font-size:clamp(2rem,5vw,4.8rem)}.closing-steps{margin-top:clamp(1rem,3vh,2rem);display:grid;gap:.7rem}.closing-step{display:grid;grid-template-columns:2.3rem 1fr;align-items:start;border-top:1px solid var(--line);padding-top:.55rem}.closing-step b{color:var(--green)}.closing-step p{font-size:clamp(.65rem,1vw,.92rem);line-height:1.5}.closing-right .thanks{font-family:var(--font-display);font-size:clamp(2.8rem,7vw,6.5rem);font-weight:350;line-height:1.05}.closing-right p{margin-top:1rem;color:#babbb5}
+
+    /* === CONTROLS === */
+    .progress{position:fixed;top:0;left:0;height:3px;background:var(--green);width:0;z-index:100;transition:width .25s ease}
+    .nav{position:fixed;right:clamp(.45rem,1vw,.8rem);top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:clamp(4px,.7vh,8px)}
+    .nav button{width:clamp(6px,.65vw,9px);height:clamp(6px,.65vw,9px);padding:0;border:0;border-radius:50%;background:rgba(115,157,89,.38);cursor:pointer}.nav button.active{background:var(--green);transform:scale(1.5)}
+    .help{position:fixed;right:clamp(.7rem,1.4vw,1.2rem);bottom:clamp(.5rem,1.3vh,1rem);z-index:90;color:#777;font-size:clamp(.48rem,.64vw,.62rem);mix-blend-mode:multiply}
+
+    /* === VIEWPORT FITTING === */
+    @media(max-height:700px){:root{--slide-padding:clamp(.75rem,3vw,2rem);--content-gap:clamp(.4rem,1.5vw,1rem);--title-size:clamp(1.25rem,4.5vw,2.5rem);--h2-size:clamp(1rem,3vw,1.75rem)}.source,.help{display:none}.headline{margin-top:clamp(1rem,3vh,2rem)}}
+    @media(max-height:600px){:root{--slide-padding:clamp(.5rem,2.5vw,1.5rem);--content-gap:clamp(.3rem,1vw,.75rem);--title-size:clamp(1.1rem,4vw,2rem);--body-size:clamp(.7rem,1.2vw,.95rem)}.nav,.decorative{display:none}}
+    @media(max-height:500px){:root{--slide-padding:clamp(.4rem,2vw,1rem);--title-size:clamp(1rem,3.5vw,1.5rem);--h2-size:clamp(.9rem,2.5vw,1.25rem);--body-size:clamp(.65rem,1vw,.85rem)}}
+    @media(max-width:700px){:root{--title-size:clamp(1.65rem,8vw,3rem)}.cover{grid-template-columns:67% 33%}.two-col,.two-col.wide-left,.two-col.wide-right{grid-template-columns:1fr 1fr}.cards-3,.type-grid,.implications{grid-template-columns:repeat(3,1fr)}.agenda{grid-template-columns:32% 68%}.agenda-left{padding:1.2rem}.agenda-right{padding:1.2rem}.agenda-left h2{font-size:clamp(1.1rem,5vw,2rem)}.nav{display:none}}
+    @media(max-width:700px) and (orientation:portrait){.cover-left{justify-content:flex-start;padding:clamp(5rem,12vh,6.5rem) 1.15rem 1.2rem}.cover-meta{top:1.25rem;left:1.15rem;max-width:52vw;line-height:1.45}.cover h1{font-size:clamp(1.7rem,8.7vw,2.7rem)}.cover-sub{font-size:clamp(.82rem,4.1vw,1.15rem)}.cover-en{margin-top:clamp(1.2rem,4vh,2rem);max-width:95%;font-size:clamp(.62rem,3.1vw,.82rem)}.presenter{font-size:clamp(.62rem,3vw,.82rem)}.cover-right{padding:1.2rem .55rem}.cover-right .label{font-size:clamp(.9rem,4.8vw,1.25rem)}.cover-right .citation{display:none}.help{display:block;right:auto;left:50%;bottom:.35rem;transform:translateX(-50%);padding:.25rem .5rem;background:rgba(241,238,230,.88);color:#444;mix-blend-mode:normal;white-space:nowrap}.help::before{content:"가로 모드 권장 · ";font-weight:800}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}html{scroll-behavior:auto}}
+    @media print{.nav,.help,.progress{display:none}.slide{page-break-after:always;width:13.333in;height:7.5in}}
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <nav class="nav" aria-label="슬라이드 이동"></nav>
+  <div class="help">← → / Space · swipe</div>
+  <main>
+    <!-- 01 COVER -->
+    <section class="slide cover" aria-label="표지">
+      <div class="cover-left">
+        <div class="cover-meta reveal">2026.10 · 노인건축특론 · PAPER REVIEW</div>
+        <h1 class="reveal">녹지 유형과<br>건강한 노화</h1>
+        <p class="cover-sub reveal">지역사회 계속거주 관점의 호주 종단연구</p>
+        <p class="cover-en en reveal">Green space type and healthy ageing in place:<br>An Australian longitudinal study</p>
+        <p class="presenter reveal">발표자&nbsp; 유상호&nbsp;&nbsp;&nbsp; 학번&nbsp; 1115587</p>
+      </div>
+      <div class="cover-right">
+        <div class="label reveal">TREE<br>CANOPY</div>
+        <div class="stat reveal">≥30<sup>%</sup></div>
+        <div class="citation reveal">Eme Eseme John et al.<br>Urban Forestry &amp; Urban Greening 84 (2023)</div>
+      </div>
+    </section>
+
+    <!-- 02 QUESTIONS -->
+    <section class="slide agenda">
+      <div class="agenda-left"><b class="reveal">7</b><h2 class="reveal">논문을 읽는<br>핵심 질문</h2></div>
+      <div class="agenda-right">
+        <div class="question-list">
+          <div class="question reveal"><span>01</span><p>왜 이 연구가 필요한가?</p></div>
+          <div class="question reveal"><span>02</span><p>연구는 무엇을 묻는가?</p></div>
+          <div class="question reveal"><span>03</span><p>핵심 개념은 무엇인가?</p></div>
+          <div class="question reveal"><span>04</span><p>어떻게 측정하고 분석했는가?</p></div>
+          <div class="question reveal"><span>05</span><p>무엇을 발견했는가?</p></div>
+          <div class="question reveal"><span>06</span><p>결과를 어떻게 해석해야 하는가?</p></div>
+          <div class="question reveal"><span>07</span><p>건강도시와 고령친화 경관에 어떤 의미가 있는가?</p></div>
+        </div>
+      </div><span class="folio">02 / 26</span>
+    </section>
+
+    <!-- 03 PAPER AT A GLANCE -->
+    <section class="slide"><div class="rule"></div><div class="kicker">PAPER AT A GLANCE</div><div class="slide-content">
+      <div class="headline reveal"><h2>이 논문은 무엇을 분석했는가</h2></div>
+      <div class="stat-row">
+        <div class="stat-card reveal"><b>3</b><span>나무 · 낮은 식생 · 잔디<br>녹지의 ‘유형’을 분리</span></div>
+        <div class="stat-card reveal"><b>1.6 km</b><span>주거지 주변 약 20분 보행권을<br>노출 범위로 설정</span></div>
+        <div class="stat-card reveal"><b>2</b><span>계속 거주한 집단과<br>이주한 집단을 비교</span></div>
+      </div>
+      <div class="takeaway reveal"><strong>핵심:</strong> “녹지가 많은가?”보다 “어떤 녹지가 있으며, 그곳에 얼마나 오래 살아왔는가?”를 함께 묻는다.</div>
+    </div><div class="source">John et al. (2023), Abstract &amp; Method. 제공된 파일은 SSRN preprint 형식임.</div><span class="folio">03 / 26</span></section>
+
+    <!-- 04 DIVIDER -->
+    <section class="slide divider"><div class="ghost">01</div><div class="slide-content"><span class="pill reveal">WHY</span><h2 class="reveal">왜 녹지와 노화를<br>함께 보는가</h2><p class="reveal">노화는 개인의 신체 변화이지만, 건강하게 살아갈 가능성은 매일 접하는 환경과 연결된다.</p></div><span class="folio">04 / 26</span></section>
+
+    <!-- 05 HEALTHY AGEING -->
+    <section class="slide"><div class="rule"></div><div class="kicker">CONCEPT 01 · HEALTHY AGEING</div><div class="slide-content">
+      <div class="headline reveal"><h2>건강한 노화는 ‘질병 없음’보다 넓다</h2></div>
+      <div class="formula">
+        <div class="formula-box reveal"><strong>기능 역량</strong><p>신체 기능, 인지 기능, 균형과 낙상, 전반적 건강</p></div><div class="op reveal">＋</div>
+        <div class="formula-box reveal"><strong>회복탄력성</strong><p>정신건강, 삶의 질, 수면, 사회적 연결</p></div><div class="op reveal">＝</div>
+        <div class="formula-box dark reveal"><strong>건강노화<br>점수 HAS</strong><p>일상을 수행하고, 의미 있는 활동을 지속할 수 있는 능력</p></div>
+      </div>
+    </div><div class="source">WHO의 기능 중심 건강노화 관점과 본 논문의 Healthy Ageing Score 구성.</div><span class="folio">05 / 26</span></section>
+
+    <!-- 06 AGEING IN PLACE -->
+    <section class="slide"><div class="rule"></div><div class="kicker">CONCEPT 02 · AGEING IN PLACE</div><div class="slide-content">
+      <div class="headline reveal"><h2>‘살던 곳에서 늙어가기’는 장소와의 관계다</h2></div>
+      <div class="two-col">
+        <div class="reveal"><div class="place-ring"><strong>PLACE<br>장소</strong></div></div>
+        <div class="reveal">
+          <div class="paper-box"><h3>물리적 환경</h3><p>주택, 보행환경, 녹지, 생활서비스처럼 일상을 가능하게 하는 조건</p></div>
+          <div class="paper-box" style="margin-top:clamp(.6rem,1.5vh,1rem)"><h3>사회적·정서적 환경</h3><p>이웃관계, 소속감, 기억, 익숙한 활동과 장소에 축적된 경험</p></div>
+          <div class="takeaway">따라서 이 연구는 <strong>이주 여부</strong>를 단순한 인구통계가 아니라 환경노출의 시간과 장소 애착을 구분하는 변수로 본다.</div>
+        </div>
+      </div>
+    </div><div class="source">van Hees et al. (2017); Boldy et al. (2011), 논문 Introduction·Discussion.</div><span class="folio">06 / 26</span></section>
+
+    <!-- 07 PATHWAYS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">CONCEPT 03 · PATHWAYS</div><div class="slide-content">
+      <div class="headline reveal"><h2>녹지는 다섯 경로로 노화를 지원할 수 있다</h2></div>
+      <div class="pathways">
+        <div class="path reveal"><b>회복</b><p>주의 피로와 스트레스를 낮추는 자연 경험</p></div>
+        <div class="path reveal"><b>신체활동</b><p>걷기와 가벼운 야외활동을 유도하는 장소</p></div>
+        <div class="path reveal"><b>사회연결</b><p>이웃을 만나고 관계를 유지하는 공유공간</p></div>
+        <div class="path reveal"><b>미기후</b><p>그늘과 냉각으로 폭염 노출을 줄이는 기능</p></div>
+        <div class="path reveal"><b>환경완충</b><p>소음·대기오염·홍수 위험을 낮추는 기능</p></div>
+      </div>
+      <div class="takeaway reveal">하지만 이 경로들이 모든 녹지 유형에서 같은 강도로 작동하는지는 확인되지 않았다.</div>
+    </div><div class="source">Kaplan (1995); Markevych et al. (2017); 논문 Introduction.</div><span class="folio">07 / 26</span></section>
+
+    <!-- 08 GAP AND QUESTIONS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESEARCH GAP</div><div class="slide-content">
+      <div class="headline reveal"><h2>기존 연구가 놓친 세 가지</h2></div>
+      <div class="cards-3">
+        <div class="mini-card reveal"><div class="idx">GAP 01</div><h3>단면 연구 중심</h3><p>한 시점의 녹지와 건강을 비교하여 장기 노출을 설명하기 어려웠다.</p></div>
+        <div class="mini-card reveal"><div class="idx">GAP 02</div><h3>건강 결과의 분절</h3><p>정신건강·인지·신체기능 중 하나만 분석한 연구가 많았다.</p></div>
+        <div class="mini-card reveal"><div class="idx">GAP 03</div><h3>녹지를 하나로 취급</h3><p>잔디, 낮은 식생, 수목이 제공하는 경험과 기능의 차이를 구분하지 않았다.</p></div>
+      </div>
+      <div class="takeaway reveal"><strong>연구 질문:</strong> 세 가지 녹지 유형은 건강노화에 서로 다른 관련성을 보이는가? 그리고 그 관련성은 계속 거주자와 이주자에게 다르게 나타나는가?</div>
+    </div><div class="source">de Keijzer et al. (2020) systematic review; 논문 Introduction.</div><span class="folio">08 / 26</span></section>
+
+    <!-- 09 DIVIDER METHODS -->
+    <section class="slide divider"><div class="ghost">02</div><div class="slide-content"><span class="pill reveal">HOW</span><h2 class="reveal">어떻게 녹지와<br>건강노화를 측정했는가</h2><p class="reveal">사람–시간–지역의 반복자료를 연결한 호주 종단연구 설계.</p></div><span class="folio">09 / 26</span></section>
+
+    <!-- 10 DESIGN FLOW -->
+    <section class="slide"><div class="rule"></div><div class="kicker">STUDY DESIGN</div><div class="slide-content">
+      <div class="headline reveal"><h2>연구 설계의 전체 흐름</h2></div>
+      <div class="flow">
+        <div class="flow-item reveal"><b>01</b><h3>코호트 자료</h3><p>45 and Up Study의 반복 건강조사</p></div>
+        <div class="flow-item reveal"><b>02</b><h3>거주지 추적</h3><p>SA2 변화로 계속 거주와 이주 구분</p></div>
+        <div class="flow-item reveal"><b>03</b><h3>녹지 노출</h3><p>1.6 km 범위의 세 가지 토지피복률</p></div>
+        <div class="flow-item reveal"><b>04</b><h3>건강 결과</h3><p>기능 역량·회복탄력성·HAS 산출</p></div>
+        <div class="flow-item reveal"><b>05</b><h3>종단 분석</h3><p>다층모형과 고정효과모형 적용</p></div>
+      </div>
+    </div><div class="source">John et al. (2023), Method and approach.</div><span class="folio">10 / 26</span></section>
+
+    <!-- 11 DATA AND AREA -->
+    <section class="slide"><div class="rule"></div><div class="kicker">DATA &amp; STUDY AREA</div><div class="slide-content">
+      <div class="headline reveal"><h2>호주 뉴사우스웨일스의 세 도시</h2></div>
+      <div class="two-col wide-left">
+        <div class="reveal">
+          <div class="ink-box"><div class="number">267,153</div><p class="number-label">45 and Up Study 전체 기초조사 참여자</p></div>
+          <div class="stat-row" style="grid-template-columns:repeat(3,1fr)">
+            <div class="stat-card"><b style="font-size:clamp(1.3rem,2.5vw,2.3rem)">Sydney</b><span>대도시권</span></div>
+            <div class="stat-card"><b style="font-size:clamp(1.3rem,2.5vw,2.3rem)">Wollongong</b><span>해안 산업도시</span></div>
+            <div class="stat-card"><b style="font-size:clamp(1.3rem,2.5vw,2.3rem)">Newcastle</b><span>지역 중심도시</span></div>
+          </div>
+        </div>
+        <div class="reveal"><h3>자료의 특징</h3><p style="margin-top:.6rem">2006–2009년 기초조사를 시작으로 건강과 거주지를 반복 추적한 대규모 코호트다. 연구는 도시별 비교보다 개인의 시간 변화와 거주지 변화에 초점을 둔다.</p><div class="takeaway">분석 단위는 단순한 사람 수가 아니라 반복관측을 포함한 <strong>person-wave</strong> 자료다.</div></div>
+      </div>
+    </div><div class="source">45 and Up Study; 논문 Data section.</div><span class="folio">11 / 26</span></section>
+
+    <!-- 12 SAMPLE -->
+    <section class="slide"><div class="rule"></div><div class="kicker">SAMPLE SELECTION</div><div class="slide-content">
+      <div class="headline reveal"><h2>최종 분석은 두 집단으로 나뉜다</h2></div>
+      <div class="sample-flow">
+        <div class="sample-node reveal"><b>60,338</b><span>2차 추적조사 참여자</span></div><div class="arrow reveal">→</div>
+        <div class="sample-node reveal"><b>23,075</b><span>동일 SA2 계속 거주<br>person-wave</span></div><div class="arrow reveal">＋</div>
+        <div class="sample-node reveal"><b>976</b><span>다른 SA2로 이주<br>person-wave</span></div>
+      </div>
+      <div class="takeaway reveal">녹지 자료, 건강노화 점수 또는 통제변수가 부족한 관측치는 제외되었다. 두 집단의 크기 차이는 해석에서 중요한 한계다.</div>
+    </div><div class="source">John et al. (2023), Figure 1 and Analyses and data preparation.</div><span class="folio">12 / 26</span></section>
+
+    <!-- 13 BUFFER -->
+    <section class="slide"><div class="rule"></div><div class="kicker">EXPOSURE MEASURE</div><div class="slide-content">
+      <div class="headline reveal"><h2>주거지 주변 1.6 km를 ‘일상 녹지권’으로 설정</h2></div>
+      <div class="two-col">
+        <div class="reveal"><div class="buffer"><span class="buffer-label">1.6 km · 약 20분 보행권</span></div></div>
+        <div class="reveal">
+          <h3>측정 방식</h3>
+          <p style="margin-top:.6rem">거주지 Mesh Block 중심점에서 도로망을 따라 1.6 km 범위를 만들고, 2 m 해상도 Geovision 토지피복 자료로 녹지 비율을 계산했다.</p>
+          <div class="paper-box" style="margin-top:1rem"><p><strong>포함:</strong> 공원 등 공개적으로 접근 가능한 녹지</p><p><strong>제외 또는 제한:</strong> 사유정원·농지, 자료 정의에 따른 일부 가로수</p></div>
+        </div>
+      </div>
+    </div><div class="source">논문 Neighbourhood green space measure and relocation.</div><span class="folio">13 / 26</span></section>
+
+    <!-- 14 GREEN TYPES -->
+    <section class="slide"><div class="rule"></div><div class="kicker">THREE GREEN SPACE TYPES</div><div class="slide-content">
+      <div class="headline reveal"><h2>‘녹지’라는 한 단어를 세 유형으로 분해</h2></div>
+      <div class="type-grid">
+        <div class="type-card reveal"><div class="pattern"></div><h3>잔디 피복</h3><p>0–4 · 5–9 · 10–19 · 20–29 · ≥30%</p></div>
+        <div class="type-card reveal"><div class="pattern"></div><h3>낮은 식생</h3><p>0–4 · 5–9 · ≥10%</p></div>
+        <div class="type-card reveal"><div class="pattern"></div><h3>수목 캐노피</h3><p>0–9 · 10–19 · 20–29 · ≥30%</p></div>
+      </div>
+      <div class="takeaway reveal">잔디와 낮은 식생은 수관 아래에 있는 부분이 자료에서 과소평가될 가능성이 있다.</div>
+    </div><div class="source">Geovision land-cover categories; Astell-Burt &amp; Feng (2019).</div><span class="folio">14 / 26</span></section>
+
+    <!-- 15 HAS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">OUTCOME MEASURE</div><div class="slide-content">
+      <div class="headline reveal"><h2>건강노화 점수는 어떻게 만들어졌는가</h2></div>
+      <div class="score-grid">
+        <div class="score-panel reveal"><h3>기능 역량 · 4개 영역</h3><ul><li>신체 기능</li><li>인지 기능</li><li>균형과 낙상</li><li>전반적 건강</li></ul></div>
+        <div class="score-panel reveal"><h3>회복탄력성 · 4개 영역</h3><ul><li>정신건강</li><li>삶의 질</li><li>수면</li><li>사회적 연결</li></ul></div>
+      </div>
+      <div class="two-col" style="margin-top:clamp(.5rem,1.5vh,1rem)"><div class="reveal"><p>각 영역을 권장 기준 미달 0점, 충족 1점, 초과 2점으로 변환한다.</p></div><div class="score-total reveal"><b>0–16</b><span>점<br>높을수록 바람직한 노화</span></div></div>
+    </div><div class="source">논문 Healthy Ageing Score.</div><span class="folio">15 / 26</span></section>
+
+    <!-- 16 MODELS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">ANALYTICAL MODEL</div><div class="slide-content">
+      <div class="headline reveal"><h2>시간·개인·지역을 분리하여 분석</h2></div>
+      <div class="model-stack">
+        <div class="model-level reveal"><b>LEVEL 1</b><h3>조사 시점</h3><p>시간에 따라 달라지는 건강노화와 녹지 노출</p></div>
+        <div class="model-level reveal"><b>LEVEL 2</b><h3>개인</h3><p>같은 사람에게 반복 측정된 자료의 상관성</p></div>
+        <div class="model-level reveal"><b>LEVEL 3</b><h3>지역 SA2</h3><p>같은 지역에 속한 사람들의 공통 환경</p></div>
+      </div>
+      <div class="takeaway reveal"><strong>통제변수:</strong> 연령, 성별, 관계 상태, 고용, 교육·소득 관련 변수, 주거유형. 계속 거주자는 3수준 다층모형, 이주자는 고정효과모형을 사용했다.</div>
+    </div><div class="source">Stata 16; 논문 Analyses and data preparation.</div><span class="folio">16 / 26</span></section>
+
+    <!-- 17 DIVIDER RESULTS -->
+    <section class="slide divider"><div class="ghost">03</div><div class="slide-content"><span class="pill reveal">WHAT</span><h2 class="reveal">녹지는 모두<br>같은 결과를 만들지 않았다</h2><p class="reveal">가장 일관된 긍정적 관련성은 수목 캐노피에서 나타났다.</p></div><span class="folio">17 / 26</span></section>
+
+    <!-- 18 OVERVIEW -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESULTS · OVERVIEW</div><div class="slide-content">
+      <div class="headline reveal"><h2>계속 거주자에게 나타난 세 유형의 방향</h2></div>
+      <div class="result-band">
+        <div class="result-cell reveal"><div class="sign">−</div><h3>잔디 피복</h3><p>20% 이상에서 기능 역량과 HAS가 낮아지는 관련성</p></div>
+        <div class="result-cell reveal"><div class="sign">≈</div><h3>낮은 식생</h3><p>대체로 제한적이며, 5–9% 구간에서 일부 부정적 관련성</p></div>
+        <div class="result-cell best reveal"><div class="sign">＋</div><h3>수목 캐노피</h3><p>비율이 높아질수록 기능 역량·회복탄력성·HAS 모두 긍정적</p></div>
+      </div>
+      <div class="takeaway reveal">‘녹지 총량’만으로는 이 서로 다른 방향을 설명할 수 없다.</div>
+    </div><div class="source">Adjusted longitudinal models, Table 2.</div><span class="folio">18 / 26</span></section>
+
+    <!-- 19 DOSE RESPONSE -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESULTS · TREE CANOPY</div><div class="slide-content">
+      <div class="headline reveal"><h2>수목 캐노피가 높을수록 HAS 관련성이 커졌다</h2></div>
+      <div class="bar-chart" aria-label="계속 거주자의 수목 캐노피 비율별 건강노화 점수 회귀계수">
+        <div class="bar-row reveal"><span class="bar-label">10–19%</span><div class="bar-track"><div class="bar" style="--v:28"></div></div><span class="bar-value">+0.17</span></div>
+        <div class="bar-row reveal"><span class="bar-label">20–29%</span><div class="bar-track"><div class="bar" style="--v:68"></div></div><span class="bar-value">+0.41</span></div>
+        <div class="bar-row reveal"><span class="bar-label">≥30%</span><div class="bar-track"><div class="bar" style="--v:100"></div></div><span class="bar-value">+0.60</span></div>
+      </div>
+      <div class="takeaway reveal">기준집단은 수목 캐노피 0–9%. 그래프는 계속 거주자에서 조정된 HAS 회귀계수 β를 비교한다.</div>
+    </div><div class="source">Table 2: β 0.17 (95% CI 0.04–0.30), 0.41 (0.27–0.55), 0.60 (0.45–0.75).</div><span class="folio">19 / 26</span></section>
+
+    <!-- 20 30 PERCENT -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESULTS · ≥30% TREE CANOPY</div><div class="slide-content">
+      <div class="headline reveal"><h2>왜 표지에 ‘≥30%’를 넣었는가</h2></div>
+      <div class="coeffs">
+        <div class="coef reveal"><b>+0.42</b><span>기능 역량</span><p>95% CI 0.31–0.53</p></div>
+        <div class="coef reveal"><b>+0.19</b><span>회복탄력성</span><p>95% CI 0.13–0.25</p></div>
+        <div class="coef reveal"><b>+0.60</b><span>건강노화 점수</span><p>95% CI 0.45–0.75</p></div>
+      </div>
+      <div class="takeaway reveal">30%는 건강이 30% 향상됐다는 뜻이 아니다. <strong>주거지 주변 토지에서 수목 캐노피가 차지하는 비율의 범주</strong>다.</div>
+    </div><div class="source">계속 거주자, 기준집단 tree canopy 0–9%, adjusted model, Table 2.</div><span class="folio">20 / 26</span></section>
+
+    <!-- 21 GRASS AND LOW -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESULTS · OTHER GREEN TYPES</div><div class="slide-content">
+      <div class="headline reveal"><h2>잔디와 낮은 식생은 같은 효과를 보이지 않았다</h2></div>
+      <div class="neg-chart">
+        <div class="neg-panel reveal"><h3>잔디 피복 · HAS</h3><div class="neg-item"><span>20–29%</span><div class="neg-track"><div class="neg-bar" style="--v:90"></div></div><b>−0.28</b></div><div class="neg-item"><span>≥30%</span><div class="neg-track"><div class="neg-bar" style="--v:100"></div></div><b>−0.31</b></div><p class="muted" style="font-size:var(--small-size);margin-top:.7rem">계속 거주자에서 통계적으로 유의한 감소 관련성.</p></div>
+        <div class="neg-panel reveal"><h3>낮은 식생 · HAS</h3><div class="neg-item"><span>5–9%</span><div class="neg-track"><div class="neg-bar" style="--v:100"></div></div><b>−0.09</b></div><div class="neg-item"><span>≥10%</span><div class="neg-track"><div class="neg-bar" style="--v:67"></div></div><b>−0.06</b></div><p class="muted" style="font-size:var(--small-size);margin-top:.7rem">5–9%만 유의, ≥10%는 유의하지 않음.</p></div>
+      </div>
+      <div class="takeaway reveal">이 결과가 잔디 자체의 위해성을 증명하는 것은 아니다. 녹지의 질, 그늘, 이용 가능성, 주변 도시구조가 함께 반영됐을 수 있다.</div>
+    </div><div class="source">Table 2, non-movers; reference categories grass 0–4%, low-lying vegetation 0–4%.</div><span class="folio">21 / 26</span></section>
+
+    <!-- 22 STAY VS MOVE -->
+    <section class="slide"><div class="rule"></div><div class="kicker">RESULTS · RELOCATION</div><div class="slide-content">
+      <div class="headline reveal"><h2>같은 녹지도 ‘머문 시간’에 따라 다르게 나타났다</h2></div>
+      <div class="compare">
+        <div class="compare-side dark reveal"><div class="big">23,075</div><h3>계속 거주자</h3><ul><li>수목 캐노피와 세 건강노화 결과가 일관되게 연결</li><li>장소의 익숙함과 사회관계가 축적될 가능성</li><li>용량–반응 형태가 비교적 뚜렷함</li></ul></div>
+        <div class="compare-side reveal"><div class="big">976</div><h3>이주자</h3><ul><li>표본이 작아 추정의 불확실성이 큼</li><li>높은 수목 캐노피는 기능 역량에서만 제한적 관련성</li><li>회복탄력성과 HAS에서는 뚜렷한 관련성이 없음</li></ul></div>
+      </div>
+    </div><div class="source">Table 2 and Discussion. 숫자는 person-wave observations.</div><span class="folio">22 / 26</span></section>
+
+    <!-- 23 INTERPRETATION -->
+    <section class="slide divider"><div class="ghost">04</div><div class="slide-content"><span class="pill reveal">SO WHAT</span><h2 class="reveal">나무가 아니라<br>나무 아래의 일상을 본다</h2><p class="reveal">수목 캐노피는 그늘, 걷기, 만남, 회복 경험을 동시에 담는 환경조건일 수 있다.</p></div><span class="folio">23 / 26</span></section>
+
+    <!-- 24 STRENGTHS LIMITS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">CRITICAL READING</div><div class="slide-content">
+      <div class="headline reveal"><h2>이 연구의 설득력과 해석의 한계</h2></div>
+      <div class="balance">
+        <div class="balance-panel reveal"><h3>강점</h3><ul><li>단면이 아닌 반복조사 자료</li><li>녹지 유형을 세분화</li><li>건강노화를 8개 영역으로 종합</li><li>이주 여부를 분리하여 장기 노출을 고려</li><li>사회경제적 교란요인을 통제</li></ul></div>
+        <div class="balance-panel dark reveal"><h3>한계</h3><ul><li>이주자 표본이 매우 작음</li><li>녹지의 실제 이용과 질을 측정하지 않음</li><li>자연 연결감과 장소 애착을 직접 측정하지 않음</li><li>일부 녹지 자료가 과소평가될 가능성</li><li>호주 세 도시의 결과를 다른 국가에 바로 적용하기 어려움</li></ul></div>
+      </div>
+      <div class="takeaway reveal"><strong>비판적 판단:</strong> 종단자료는 시간적 순서를 강화하지만, 관찰연구만으로 인과관계가 완전히 증명되지는 않는다.</div>
+    </div><div class="source">논문 Limitations and future research; 발표자 해석.</div><span class="folio">24 / 26</span></section>
+
+    <!-- 25 IMPLICATIONS -->
+    <section class="slide"><div class="rule"></div><div class="kicker">IMPLICATIONS · HEALTHY CITY &amp; LANDSCAPE</div><div class="slide-content">
+      <div class="headline reveal"><h2>건강도시와 고령친화 경관에 주는 세 가지 의미</h2></div>
+      <div class="implications">
+        <div class="implication reveal"><div class="n">01</div><h3>면적보다 구조</h3><p>총 녹지율 하나로 평가하지 말고 수목 캐노피, 그늘, 보행 연속성과 식생구조를 함께 본다.</p></div>
+        <div class="implication reveal"><div class="n">02</div><h3>일상권 중심</h3><p>대형 공원의 수보다 노인이 매일 접근할 수 있는 주거지 주변 20분 생활권을 우선한다.</p></div>
+        <div class="implication reveal"><div class="n">03</div><h3>시간을 설계</h3><p>새로운 시설 공급과 함께 오래 머물며 관계를 축적할 수 있는 관리와 지역사회 프로그램을 연결한다.</p></div>
+      </div>
+      <div class="takeaway reveal">정책 목표는 “녹지를 공급한다”에서 “노인이 오래 이용할 수 있는 수목 기반 생활환경을 만든다”로 구체화될 수 있다.</div>
+    </div><div class="source">논문 Conclusion을 건강도시·경관계획 관점에서 재구성.</div><span class="folio">25 / 26</span></section>
+
+    <!-- 26 CLOSING -->
+    <section class="slide closing">
+      <div class="closing-left">
+        <span class="pill reveal" style="width:max-content">TAKEAWAY</span>
+        <h2 class="reveal" style="margin-top:1rem">세 문장으로 정리</h2>
+        <div class="closing-steps">
+          <div class="closing-step reveal"><b>01</b><p>건강한 노화는 기능 역량과 회복탄력성을 유지하는 과정이다.</p></div>
+          <div class="closing-step reveal"><b>02</b><p>녹지의 총량보다 유형이 중요하며, 가장 일관된 관련성은 수목 캐노피에서 나타났다.</p></div>
+          <div class="closing-step reveal"><b>03</b><p>건강도시는 나무의 면적뿐 아니라 그 아래에서 축적되는 일상과 장소 관계를 설계해야 한다.</p></div>
+        </div>
+      </div>
+      <div class="closing-right"><div class="thanks reveal">감사합니다</div><p class="reveal">질문과 토론</p><div class="citation reveal" style="margin-top:auto;color:#8f908b;font-size:var(--small-size)">발표자 유상호 · 1115587<br>John et al. (2023)</div></div>
+      <span class="folio" style="color:#aaa">26 / 26</span>
+    </section>
+  </main>
+
+  <script>
+    /* === SLIDE CONTROLLER: keyboard, wheel, touch, progress, dots === */
+    class SlidePresentation{
+      constructor(){this.slides=[...document.querySelectorAll('.slide')];this.current=0;this.lock=false;this.touchY=0;this.nav=document.querySelector('.nav');this.progress=document.querySelector('.progress');this.buildDots();this.observe();this.bind();this.go(this.hashIndex(),false)}
+      hashIndex(){const m=location.hash.match(/slide-(\d+)/);return m?Math.min(this.slides.length-1,Math.max(0,+m[1]-1)):0}
+      buildDots(){this.nav.innerHTML='';this.slides.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`슬라이드 ${i+1}`);b.addEventListener('click',()=>this.go(i));this.nav.appendChild(b)})}
+      observe(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');const i=this.slides.indexOf(e.target);if(e.intersectionRatio>.55)this.setCurrent(i)}}),{threshold:[.2,.55,.85]});this.slides.forEach(s=>io.observe(s))}
+      bind(){document.addEventListener('keydown',e=>{if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();this.go(this.current+1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();this.go(this.current-1)}if(e.key==='Home')this.go(0);if(e.key==='End')this.go(this.slides.length-1)});document.addEventListener('wheel',e=>{if(this.lock||Math.abs(e.deltaY)<18)return;this.lock=true;this.go(this.current+(e.deltaY>0?1:-1));setTimeout(()=>this.lock=false,520)},{passive:true});document.addEventListener('touchstart',e=>this.touchY=e.changedTouches[0].clientY,{passive:true});document.addEventListener('touchend',e=>{const d=this.touchY-e.changedTouches[0].clientY;if(Math.abs(d)>45)this.go(this.current+(d>0?1:-1))},{passive:true});window.addEventListener('hashchange',()=>this.go(this.hashIndex(),false))}
+      setCurrent(i){this.current=i;[...this.nav.children].forEach((b,n)=>b.classList.toggle('active',n===i));this.progress.style.width=`${((i+1)/this.slides.length)*100}%`;history.replaceState(null,'',`#slide-${i+1}`)}
+      go(i,smooth=true){i=Math.max(0,Math.min(this.slides.length-1,i));this.current=i;this.slides[i].scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});this.setCurrent(i)}
+    }
+    new SlidePresentation();
+  </script>
+</body>
+</html>
