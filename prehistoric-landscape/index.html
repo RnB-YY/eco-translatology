@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171612"><meta name="description" content="선사적 풍경구조: 자연, 인간, 공동체의 초기 공간 관계. 유상호의 16페이지 한국어 발표.">
+<title>선사적 풍경구조 · 유상호</title>
+<link rel="preload" href="assets/pretendard.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ===========================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   These styles ensure slides fit exactly in the viewport.
+   =========================================== */
+
+/* 1. Lock html/body to viewport */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* 2. Each slide = exact viewport height */
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    overflow: hidden; /* CRITICAL: Prevent ANY overflow */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 3. Content container with flex for centering */
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100%;
+    overflow: hidden; /* Double-protection against overflow */
+    padding: var(--slide-padding);
+}
+
+/* 4. ALL typography uses clamp() for responsive scaling */
+:root {
+    /* Titles scale from mobile to desktop */
+    --title-size: clamp(1.5rem, 5vw, 4rem);
+    --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+    --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+
+    /* Body text */
+    --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+    --small-size: clamp(0.65rem, 1vw, 0.875rem);
+
+    /* Spacing scales with viewport */
+    --slide-padding: clamp(1rem, 4vw, 4rem);
+    --content-gap: clamp(0.5rem, 2vw, 2rem);
+    --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+
+/* 5. Cards/containers use viewport-relative max sizes */
+.card, .container, .content-box {
+    max-width: min(90vw, 1000px);
+    max-height: min(80vh, 700px);
+}
+
+/* 6. Lists auto-scale with viewport */
+.feature-list, .bullet-list {
+    gap: clamp(0.4rem, 1vh, 1rem);
+}
+
+.feature-list li, .bullet-list li {
+    font-size: var(--body-size);
+    line-height: 1.4;
+}
+
+/* 7. Grids adapt to available space */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+/* 8. Images constrained to viewport */
+img, .image-container {
+    max-width: 100%;
+    max-height: min(50vh, 400px);
+    object-fit: contain;
+}
+
+/* ===========================================
+   RESPONSIVE BREAKPOINTS
+   Aggressive scaling for smaller viewports
+   =========================================== */
+
+/* Short viewports (< 700px height) */
+@media (max-height: 700px) {
+    :root {
+        --slide-padding: clamp(0.75rem, 3vw, 2rem);
+        --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+        --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+        --h2-size: clamp(1rem, 3vw, 1.75rem);
+    }
+}
+
+/* Very short viewports (< 600px height) */
+@media (max-height: 600px) {
+    :root {
+        --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+        --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+        --title-size: clamp(1.1rem, 4vw, 2rem);
+        --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    }
+
+    /* Hide non-essential elements */
+    .nav-dots, .keyboard-hint, .decorative {
+        display: none;
+    }
+}
+
+/* Extremely short (landscape phones, < 500px height) */
+@media (max-height: 500px) {
+    :root {
+        --slide-padding: clamp(0.4rem, 2vw, 1rem);
+        --title-size: clamp(1rem, 3.5vw, 1.5rem);
+        --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        --body-size: clamp(0.65rem, 1vw, 0.85rem);
+    }
+}
+
+/* Narrow viewports (< 600px width) */
+@media (max-width: 600px) {
+    :root {
+        --title-size: clamp(1.25rem, 7vw, 2.5rem);
+    }
+
+    /* Stack grids vertically */
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===========================================
+   REDUCED MOTION
+   Respect user preferences
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* === APPROVED TERRAIN / PAPER DESIGN === */
+@font-face{font-family:'Pretendard';src:url('assets/pretendard.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:root{--shell:#171612;--shell-text:#eee8d9;--accent:#e85c35;--paper:#f4f0e7;--scale:1}
+*{box-sizing:border-box}html{scroll-snap-type:none;background:var(--shell)}body{margin:0;color:var(--shell-text);background:var(--shell);font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;overflow:hidden}
+button,select,a{font:inherit}button,select{color:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}button:disabled{opacity:.3;cursor:default}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #e6c79b;outline-offset:4px}
+.tools{position:fixed;z-index:40;top:0;left:0;right:0;height:clamp(42px,5.2vh,50px);padding:0 clamp(12px,2vw,28px);display:flex;align-items:center;justify-content:space-between;background:var(--shell);font-size:clamp(11px,1vw,14px)}
+.tools-left,.tools-right{display:flex;align-items:center;gap:clamp(9px,1.4vw,20px)}.tools .project-name{color:#998f7d}.tool{border:0;background:transparent;padding:clamp(7px,1vh,10px) clamp(4px,.6vw,8px);color:#d4cabb}.tool:hover{color:#fff}.tools a:hover{color:#e5bc85}
+.slide{position:fixed;inset:0;display:none;overflow:hidden;width:100vw;height:100vh;height:100dvh}.slide.active{display:block}.frame{position:absolute;inset:50px 12px 62px;overflow:hidden}.canvas{position:absolute;left:50%;top:50%;width:1600px;height:900px;overflow:hidden;transform:translate(-50%,-50%) scale(var(--scale));transform-origin:center;box-shadow:0 12px 70px #0006}
+.canvas-text,.canvas-image,.canvas-box{position:absolute;margin:0;max-width:none;max-height:none}.canvas-text{display:flex;flex-direction:column;justify-content:center;line-height:1.2;white-space:pre-wrap;word-break:keep-all;line-break:strict;overflow-wrap:normal;letter-spacing:0}.canvas-text>span{display:block}.canvas-image{object-fit:cover}.slide.active .canvas{animation:slide-arrive .3s ease-out both}
+@keyframes slide-arrive{from{opacity:.2}to{opacity:1}}
+/* === PRESENTATION CONTROLS === */
+.navigation{position:fixed;z-index:40;bottom:0;left:0;right:0;height:clamp(54px,6vh,62px);padding:0 clamp(12px,2vw,28px) env(safe-area-inset-bottom);display:flex;align-items:center;gap:clamp(8px,1vw,16px);background:var(--shell)}
+.nav-button{min-width:clamp(38px,4vw,52px);min-height:clamp(34px,4vh,42px);border:1px solid #867c5d55;background:transparent;border-radius:4px;font-size:clamp(18px,2vw,24px)}.nav-button:hover{background:#e6cfab16}.slide-picker{width:clamp(145px,24vw,380px);min-width:0;border:0;background:transparent;padding:8px 0;font-size:clamp(12px,1.1vw,15px)}.slide-picker option{background:var(--shell)}.nav-dots{display:flex;align-items:center;justify-content:center;flex:1;gap:clamp(4px,.6vw,9px)}.dot{width:clamp(5px,.6vw,7px);height:clamp(5px,.6vw,7px);border:0;padding:0;border-radius:50%;background:#73684e}.dot.current{background:#e8bd84;box-shadow:0 0 0 3px #e8bd841d}.counter{font-size:clamp(11px,1vw,14px);font-variant-numeric:tabular-nums;color:#c6b99f;white-space:nowrap}.progress-meter{position:fixed;z-index:50;left:0;bottom:0;height:2px;width:6.25%;background:var(--accent);transition:width .2s ease}
+.live-status{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+/* === MOBILE READING VIEW: ONLY THE ON-SLIDE CONTENT === */
+.reading-main{display:none;max-width:850px;margin:0 auto;padding:clamp(78px,10vh,100px) clamp(22px,5vw,46px) clamp(92px,12vh,130px);color:#24211c}.reading-kicker{color:#a85335;font-size:clamp(13px,2vw,16px);font-weight:700;letter-spacing:.06em}.reading-page h1{font-size:clamp(32px,6.4vw,52px);line-height:1.3;margin:clamp(20px,4vh,35px) 0;font-weight:750;word-break:keep-all}.reading-page h2{font-size:clamp(23px,4vw,30px);line-height:1.4;margin:clamp(30px,5vh,46px) 0 clamp(12px,2vh,18px);word-break:keep-all}.reading-page p{font-size:clamp(20px,3.5vw,24px);line-height:1.75;word-break:keep-all;overflow-wrap:normal;margin:clamp(16px,3vh,25px) 0}.reading-page figure{margin:clamp(25px,4vh,38px) 0}.reading-page img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}.reading-page figcaption{font-size:clamp(12px,2vw,15px);line-height:1.6;color:#786d60;margin-top:clamp(9px,1.5vh,14px);word-break:keep-all}.reading-page[hidden]{display:none}
+body.reading-mode{background:var(--paper);overflow-y:auto;height:auto;min-height:100dvh}body.reading-mode .stage{display:none}body.reading-mode .reading-main{display:block}body.reading-mode .tools,body.reading-mode .navigation{background:var(--paper);color:#25221e;border-color:#b8ab9255}body.reading-mode .tools{border-bottom:1px solid #b8ab9255}body.reading-mode .navigation{border-top:1px solid #b8ab9255}body.reading-mode .tool,body.reading-mode .counter{color:#675d4d}body.reading-mode .slide-picker option{background:var(--paper)}body.reading-mode .project-name{color:#86785e}body.reading-mode .dot.current{background:#b3643c}
+/* === FULLSCREEN / SHORT VIEWPORTS === */
+body.fullscreen .frame{inset:0}body.fullscreen .tools,body.fullscreen .navigation,body.fullscreen .progress-meter{opacity:0;transition:opacity .25s;pointer-events:none}body.fullscreen.controls-visible .tools,body.fullscreen.controls-visible .navigation{opacity:.96;pointer-events:auto}body.fullscreen.controls-visible .progress-meter{opacity:1}
+@media(max-width:700px){.project-name,.nav-dots{display:none}.tools-left,.tools-right{gap:8px}.slide-picker{flex:1;width:100px}.counter{font-size:12px}.reading-main{padding-top:76px}}
+@media(max-height:700px){.frame{inset:43px 10px 52px}.tools{height:40px}.navigation{height:49px}}
+@media(max-height:600px){.frame{inset:35px 8px 46px}.tools{height:34px}.navigation{height:44px}.tools{font-size:11px}}
+@media(max-height:500px){.frame{inset:32px 7px 42px}.tools{height:31px}.navigation{height:40px}.nav-button{min-height:29px}.nav-dots{display:none}}
+@media(prefers-reduced-motion:reduce){.slide.active .canvas{animation:none}.progress-meter{transition:none}}
+@media print{html,body{height:auto;overflow:visible;background:white}.tools,.navigation,.progress-meter,.reading-main{display:none!important}.slide{display:block!important;position:relative;width:1600px;height:900px;break-after:page}.frame{inset:0}.canvas{transform:none;left:0;top:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="tools"><div class="tools-left"><a href="../universe/" aria-label="개인 지식 행성으로 돌아가기">← 개인 행성</a><span class="project-name">선사적 풍경구조</span></div><div class="tools-right"><a class="tool" href="credits.html" target="_blank" rel="noopener">자료 출처</a><button class="tool" id="modeToggle" type="button" aria-pressed="false">읽기 보기</button><button class="tool" id="fullscreenToggle" type="button">전체 화면</button></div></header>
+<main class="stage" aria-label="슬라이드 발표"><!-- === SLIDE 01 === -->
+<section class="slide active" data-page="1" aria-label="1. 선사적 풍경구조" >
+ <div class="frame"><div class="canvas" style="background:#1B1A17"><img class="canvas-image" style="left:0px;top:0px;width:1600px;height:900px;" src="assets/cover-terrain.webp" alt="선택한 4안의 지형 배경. 검은 공간에서 지형으로 자연스럽게 이어짐" decoding="async">
+<div class="canvas-text" style="left:93px;top:94px;width:555px;height:37px;font-size:clamp(20px,20px,20px);color:#D8B878;font-weight:700;text-align:left"><span>PREHISTORIC LANDSCAPE</span></div>
+<div class="canvas-text" style="left:91px;top:232px;width:610px;height:117px;font-size:clamp(98px,98px,98px);color:#FFFDF7;font-weight:700;text-align:left"><span>선사적</span></div>
+<div class="canvas-text" style="left:91px;top:344px;width:645px;height:117px;font-size:clamp(98px,98px,98px);color:#FFFDF7;font-weight:700;text-align:left"><span>풍경구조</span></div>
+<div class="canvas-text" style="left:96px;top:509px;width:621px;height:63px;font-size:clamp(29px,29px,29px);color:#EAC998;font-weight:400;text-align:left"><span>자연, 인간, 공동체의 초기 공간 관계</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:96px;top:664px;width:330px;height:3px;background:#CDB67C"></span>
+<div class="canvas-text" style="left:96px;top:722px;width:695px;height:39px;font-size:clamp(20px,20px,20px);color:#D2C6B4;font-weight:400;text-align:left"><span>도시 풍경의 이해  ·  풍경구조의 역사적 유형</span></div>
+<div class="canvas-text" style="left:96px;top:766px;width:690px;height:40px;font-size:clamp(23px,23px,23px);color:#FFFDF7;font-weight:700;text-align:left"><span>발표자  유상호 (Parpelza)</span></div>
+<div class="canvas-text" style="left:96px;top:807px;width:440px;height:35px;font-size:clamp(19px,19px,19px);color:#D2C6B4;font-weight:400;text-align:left"><span>학번  1115587</span></div></div></div>
+</section>
+<!-- === SLIDE 02 === -->
+<section class="slide" data-page="2" aria-label="2. 발표의 질문" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><img class="canvas-image" style="left:840px;top:0px;width:760px;height:900px;" src="assets/irish-camp.webp" alt="아일랜드 국립유산공원의 중석기 캠프 복원 전시" decoding="async">
+<div class="canvas-text" style="left:82px;top:60px;width:600px;height:34px;font-size:clamp(18px,18px,18px);color:#E85C35;font-weight:700;text-align:left"><span>발표의 질문</span></div>
+<div class="canvas-text" style="left:80px;top:153px;width:730px;height:164px;font-size:clamp(53px,53px,53px);color:#1B1A17;font-weight:700;text-align:left"><span>도시가 없던 시대에도<br>공간의 구조가 있었을까?</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:84px;top:347px;width:658px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:84px;top:376px;width:654px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>교재에서 출발</span></div>
+<div class="canvas-text" style="left:84px;top:429px;width:654px;height:93px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>자연과 인간이 가까웠다는 교재의 설명을 읽는다.</span></div>
+<div class="canvas-text" style="left:84px;top:552px;width:654px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>두 유적으로 확인</span></div>
+<div class="canvas-text" style="left:84px;top:605px;width:654px;height:93px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>핀스방의 계절적 캠프와 차탈회위크의 정착촌을 비교한다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:1310px;top:57px;width:245px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1322px;top:59px;width:221px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>박물관 복원 전시</span></div></div></div>
+</section>
+<!-- === SLIDE 03 === -->
+<section class="slide" data-page="3" aria-label="3. 교재가 설명하는 선사적 풍경" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>교재 읽기</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:895px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>교재가 설명하는 선사적 풍경</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:895px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>교재의 세 문장을 실제 생활 장면과 연결해 읽는다.</span></div>
+<img class="canvas-image" style="left:1020px;top:0px;width:580px;height:900px;" src="assets/prehistoric-story-v4.webp" alt="멀리서 본 선사시대 강변의 채집과 생활 장면. 얼굴은 보이지 않음" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:1040px;top:30px;width:334px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1052px;top:32px;width:310px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>해석을 위한 생성 이미지</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:88px;top:288px;width:55px;height:5px;background:#E85C35"></span>
+<div class="canvas-text" style="left:157px;top:276px;width:844px;height:62px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>“대지와 인간의 관계는 소박하였다.”</span></div>
+<div class="canvas-text" style="left:158px;top:345px;width:835px;height:62px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>자연조건이 생활의 장소 선택과 직접 연결된다는 설명이다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:88px;top:462px;width:55px;height:5px;background:#E85C35"></span>
+<div class="canvas-text" style="left:157px;top:450px;width:844px;height:62px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>“소박”은 “자유롭고 인간적”이다.</span></div>
+<div class="canvas-text" style="left:158px;top:519px;width:835px;height:62px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>이 표현은 교재의 가치 판단이며, 고고학적 사실과 구분해야 한다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:88px;top:636px;width:55px;height:5px;background:#E85C35"></span>
+<div class="canvas-text" style="left:157px;top:624px;width:844px;height:62px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>자연과 인간의 “감성적 밀착”</span></div>
+<div class="canvas-text" style="left:158px;top:693px;width:835px;height:62px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>도식은 두 영역의 큰 중첩으로 그 관계를 나타낸다.</span></div></div></div>
+</section>
+<!-- === SLIDE 04 === -->
+<section class="slide" data-page="4" aria-label="4. 풍경구조를 읽는 세 가지 질문" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>핵심 개념</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>풍경구조를 읽는 세 가지 질문</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>풍경구조는 아름다운 경치가 아니라 생활이 장소에 남긴 관계를 뜻한다.</span></div>
+<div class="canvas-text" style="left:91px;top:291px;width:72px;height:60px;font-size:clamp(30px,30px,30px);color:#E85C35;font-weight:700;text-align:left"><span>01</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:181px;top:359px;width:1294px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:180px;top:287px;width:1100px;height:53px;font-size:clamp(33px,33px,33px);color:#1B1A17;font-weight:700;text-align:left"><span>어디에 머물렀는가?</span></div>
+<div class="canvas-text" style="left:181px;top:345px;width:1225px;height:61px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>물과 먹을거리에 접근할 수 있는 장소를 선택했다.</span></div>
+<div class="canvas-text" style="left:91px;top:449px;width:72px;height:60px;font-size:clamp(30px,30px,30px);color:#E85C35;font-weight:700;text-align:left"><span>02</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:181px;top:517px;width:1294px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:180px;top:445px;width:1100px;height:53px;font-size:clamp(33px,33px,33px);color:#1B1A17;font-weight:700;text-align:left"><span>그곳을 어떻게 썼는가?</span></div>
+<div class="canvas-text" style="left:181px;top:503px;width:1225px;height:61px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>거처, 불자리, 도구 제작 구역처럼 활동이 나뉘었다.</span></div>
+<div class="canvas-text" style="left:91px;top:607px;width:72px;height:60px;font-size:clamp(30px,30px,30px);color:#E85C35;font-weight:700;text-align:left"><span>03</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:181px;top:675px;width:1294px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:180px;top:603px;width:1100px;height:53px;font-size:clamp(33px,33px,33px);color:#1B1A17;font-weight:700;text-align:left"><span>누구와 함께 썼는가?</span></div>
+<div class="canvas-text" style="left:181px;top:661px;width:1225px;height:61px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>생활의 장소는 집단의 협력과 공유 속에서 유지됐다.</span></div></div></div>
+</section>
+<!-- === SLIDE 05 === -->
+<section class="slide" data-page="5" aria-label="5. 센강가의 계절적 사냥 캠프" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#1B1A17"><img class="canvas-image" style="left:0px;top:154px;width:760px;height:516px;" src="assets/pincevent-dig.webp" alt="1967년 핀스방 발굴 현장 기록 사진" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:760px;top:0px;width:840px;height:900px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:805px;top:58px;width:670px;height:35px;font-size:clamp(18px,18px,18px);color:#E85C35;font-weight:700;text-align:left"><span>사례 1 / 핀스방</span></div>
+<div class="canvas-text" style="left:800px;top:137px;width:750px;height:162px;font-size:clamp(56px,56px,56px);color:#FFFDF7;font-weight:700;text-align:left"><span>센강가의<br>계절적 사냥 캠프</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:808px;top:326px;width:670px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:807px;top:358px;width:705px;height:43px;font-size:clamp(29px,29px,29px);color:#FFFDF7;font-weight:700;text-align:left"><span>언제, 어디서</span></div>
+<div class="canvas-text" style="left:807px;top:411px;width:705px;height:93px;font-size:clamp(26px,26px,26px);color:#E2DACD;font-weight:400;text-align:left"><span>약 1만 4천 년 전, 오늘날 프랑스의 센강 유역</span></div>
+<div class="canvas-text" style="left:807px;top:536px;width:705px;height:43px;font-size:clamp(29px,29px,29px);color:#FFFDF7;font-weight:700;text-align:left"><span>무엇이 남았나</span></div>
+<div class="canvas-text" style="left:807px;top:589px;width:705px;height:93px;font-size:clamp(26px,26px,26px);color:#E2DACD;font-weight:400;text-align:left"><span>여러 거주층, 화덕, 순록 뼈와 석기 제작 흔적</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:46px;top:50px;width:244px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:58px;top:52px;width:220px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>1967년 발굴 기록</span></div>
+<div class="canvas-text" style="left:45px;top:712px;width:670px;height:104px;font-size:clamp(27px,27px,27px);color:#E5DCCF;font-weight:400;text-align:left"><span>발굴 사진 속 유물의 위치를 기록해<br>캠프의 활동 구역을 연구한다.</span></div></div></div>
+</section>
+<!-- === SLIDE 06 === -->
+<section class="slide" data-page="6" aria-label="6. 왜 같은 강가로 되돌아왔을까?" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>핀스방 / 장소 선택</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>왜 같은 강가로 되돌아왔을까?</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>센강의 계절 변화와 순록의 이동이 이 장소를 유리하게 만들었다.</span></div>
+<img class="canvas-image" style="left:880px;top:292px;width:635px;height:501px;" src="assets/pincevent-site.webp" alt="오늘날 핀스방 유적 주변의 조사 현장" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:1244px;top:310px;width:250px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1256px;top:312px;width:226px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>현재의 유적 현장</span></div>
+<div class="canvas-text" style="left:88px;top:301px;width:720px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>가을의 강가</span></div>
+<div class="canvas-text" style="left:88px;top:354px;width:720px;height:93px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>박물관은 낮아진 강 수위와 얕은 여울을 중요한 조건으로 설명한다.</span></div>
+<div class="canvas-text" style="left:88px;top:497px;width:720px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>순록의 이동</span></div>
+<div class="canvas-text" style="left:88px;top:550px;width:720px;height:93px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>강을 건너는 순록이 느려지는 때에 사냥 집단이 다시 모였다.</span></div>
+<div class="canvas-text" style="left:89px;top:735px;width:1380px;height:58px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>장소 선택은 자연조건과 생활 전략이 만나는 지점이었다.</span></div></div></div>
+</section>
+<!-- === SLIDE 07 === -->
+<section class="slide" data-page="7" aria-label="7. 임시 캠프에도 활동 구역이 있었다" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>핀스방 / 공간 사용</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>임시 캠프에도 활동 구역이 있었다</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>화덕 주위의 유물 분포는 사람들이 어디서 무엇을 했는지 알려 준다.</span></div>
+<img class="canvas-image" style="left:84px;top:295px;width:1426px;height:270px;" src="assets/pincevent-tools.webp" alt="핀스방에서 출토되어 박물관에 전시된 석기" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:1226px;top:309px;width:238px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1238px;top:311px;width:214px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>출토 석기</span></div>
+<div class="canvas-text" style="left:84px;top:608px;width:445px;height:44px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>화덕</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:84px;top:661px;width:425px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:84px;top:681px;width:432px;height:88px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>고기를 익히고 여러 활동의 중심으로 사용했다.</span></div>
+<div class="canvas-text" style="left:579px;top:608px;width:445px;height:44px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>도구 제작</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:579px;top:661px;width:425px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:579px;top:681px;width:432px;height:88px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>석기를 만들거나 수리한 흔적이 모여 있다.</span></div>
+<div class="canvas-text" style="left:1074px;top:608px;width:445px;height:44px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>거처</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:1074px;top:661px;width:425px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:1074px;top:681px;width:432px;height:88px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>가벼운 주거 흔적과 작업 구역의 관계를 추정한다.</span></div></div></div>
+</section>
+<!-- === SLIDE 08 === -->
+<section class="slide" data-page="8" aria-label="8. 공동체와 토지의 관계" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>교재의 이론</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>공동체와 토지의 관계</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>교재는 마르크스의 문장을 통해 자연과 공동체를 분리하지 않는 관점을 제시한다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:90px;top:301px;width:12px;height:360px;background:#E85C35"></span>
+<div class="canvas-text" style="left:137px;top:299px;width:1342px;height:146px;font-size:clamp(39px,39px,39px);color:#1B1A17;font-weight:700;text-align:left"><span>“토지”는 단순한 재산이 아니라<br>사람들이 함께 살아가는 조건이다.</span></div>
+<div class="canvas-text" style="left:140px;top:510px;width:300px;height:42px;font-size:clamp(23px,23px,23px);color:#E85C35;font-weight:700;text-align:left"><span>교재의 해석</span></div>
+<div class="canvas-text" style="left:140px;top:556px;width:1310px;height:70px;font-size:clamp(29px,29px,29px);color:#5C5750;font-weight:400;text-align:left"><span>생활공간과 공동체의 관계를 설명하는 이론적 틀이다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:137px;top:687px;width:1330px;height:99px;background:#E8E0D2"></span>
+<div class="canvas-text" style="left:163px;top:709px;width:1275px;height:58px;font-size:clamp(25px,25px,25px);color:#1B1A17;font-weight:700;text-align:left"><span>주의: 모든 선사 집단이 같은 토지 소유 방식으로 살았다는 증거는 아니다.</span></div></div></div>
+</section>
+<!-- === SLIDE 09 === -->
+<section class="slide" data-page="9" aria-label="9. 교재 도식을 장면으로 읽기" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>교재 도식</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>교재 도식을 장면으로 읽기</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>자연과 생활 영역의 ‘겹침’을 강가 캠프의 장소 관계로 풀어 본다.</span></div>
+<img class="canvas-image" style="left:83px;top:273px;width:990px;height:548px;" src="assets/prehistoric-topdown-camp-v4.webp" alt="지평선이 없는 90도 수직 평면도. 중앙의 거처와 화덕, 주변의 숲과 강을 구분하는 설명 그림" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:102px;top:291px;width:334px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:114px;top:293px;width:310px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>해석을 위한 생성 이미지</span></div>
+<div class="canvas-text" style="left:1111px;top:288px;width:100px;height:30px;font-size:clamp(19px,19px,19px);color:#E85C35;font-weight:700;text-align:left"><span>01</span></div>
+<div class="canvas-text" style="left:1110px;top:320px;width:402px;height:54px;font-size:clamp(34px,34px,34px);color:#1B1A17;font-weight:700;text-align:left"><span>강과 여울</span></div>
+<div class="canvas-text" style="left:1110px;top:379px;width:401px;height:74px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>물과 이동 경로가 캠프의 위치를 정한다.</span></div>
+<div class="canvas-text" style="left:1111px;top:460px;width:100px;height:30px;font-size:clamp(19px,19px,19px);color:#E85C35;font-weight:700;text-align:left"><span>02</span></div>
+<div class="canvas-text" style="left:1110px;top:492px;width:402px;height:54px;font-size:clamp(34px,34px,34px);color:#1B1A17;font-weight:700;text-align:left"><span>캠프와 화덕</span></div>
+<div class="canvas-text" style="left:1110px;top:551px;width:401px;height:74px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>거처와 공동 활동이 한곳에 모인다.</span></div>
+<div class="canvas-text" style="left:1111px;top:632px;width:100px;height:30px;font-size:clamp(19px,19px,19px);color:#E85C35;font-weight:700;text-align:left"><span>03</span></div>
+<div class="canvas-text" style="left:1110px;top:664px;width:402px;height:54px;font-size:clamp(34px,34px,34px);color:#1B1A17;font-weight:700;text-align:left"><span>주변의 자원</span></div>
+<div class="canvas-text" style="left:1110px;top:723px;width:401px;height:74px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>채집 숲과 동물 이동 구역까지 생활이 이어진다.</span></div></div></div>
+</section>
+<!-- === SLIDE 10 === -->
+<section class="slide" data-page="10" aria-label="10. 이동과 정착은 공간을 다르게 조직했다" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>두 생활 방식의 비교</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>이동과 정착은 공간을 다르게 조직했다</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>두 사례는 서로 다른 지역과 시대에 속한다. 하나의 직선적 발전 단계로 볼 수 없다.</span></div>
+<img class="canvas-image" style="left:83px;top:281px;width:678px;height:354px;" src="assets/lejre-camp.webp" alt="덴마크 르예르의 석기시대 캠프 복원 전시" decoding="async">
+<img class="canvas-image" style="left:837px;top:281px;width:678px;height:354px;" src="assets/catal-wide-08.webp" alt="오늘날 차탈회위크 발굴 현장" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:96px;top:296px;width:232px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:108px;top:298px;width:208px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>야외박물관 복원</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:1247px;top:296px;width:247px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1259px;top:298px;width:223px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>현재의 발굴 현장</span></div>
+<div class="canvas-text" style="left:89px;top:652px;width:655px;height:50px;font-size:clamp(33px,33px,33px);color:#1B1A17;font-weight:700;text-align:left"><span>계절적 이용</span></div>
+<div class="canvas-text" style="left:89px;top:709px;width:650px;height:62px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>필요한 시기에 머물고 다시 이동한다.</span></div>
+<div class="canvas-text" style="left:844px;top:652px;width:655px;height:50px;font-size:clamp(33px,33px,33px);color:#1B1A17;font-weight:700;text-align:left"><span>장기 정착</span></div>
+<div class="canvas-text" style="left:844px;top:709px;width:650px;height:62px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>집을 고쳐 쓰고 이웃 관계가 누적된다.</span></div></div></div>
+</section>
+<!-- === SLIDE 11 === -->
+<section class="slide" data-page="11" aria-label="11. 오래 이어진 정착의 흔적" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><img class="canvas-image" style="left:0px;top:0px;width:750px;height:900px;" src="assets/catal-overview.webp" alt="차탈회위크 발굴 구역의 현대 사진" decoding="async">
+<div class="canvas-text" style="left:801px;top:60px;width:670px;height:36px;font-size:clamp(18px,18px,18px);color:#E85C35;font-weight:700;text-align:left"><span>사례 2 / 차탈회위크</span></div>
+<div class="canvas-text" style="left:795px;top:139px;width:730px;height:150px;font-size:clamp(56px,56px,56px);color:#1B1A17;font-weight:700;text-align:left"><span>오래 이어진<br>정착의 흔적</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:805px;top:323px;width:670px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:803px;top:356px;width:715px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>장소와 시기</span></div>
+<div class="canvas-text" style="left:803px;top:409px;width:715px;height:93px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>오늘날 튀르키예 코니아 평원. 유네스코는 신석기 정착층을 기원전 약 7400–6200년으로 설명한다.</span></div>
+<div class="canvas-text" style="left:803px;top:580px;width:715px;height:43px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>발굴이 보여 주는 것</span></div>
+<div class="canvas-text" style="left:803px;top:633px;width:715px;height:93px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>집을 다시 짓고 생활의 장소를 계속 사용하면서 거주층이 쌓였다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:43px;top:49px;width:245px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:55px;top:51px;width:221px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>현재의 발굴 현장</span></div></div></div>
+</section>
+<!-- === SLIDE 12 === -->
+<section class="slide" data-page="12" aria-label="12. 집과 집이 맞닿은 정착지" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#1B1A17"><img class="canvas-image" style="left:650px;top:0px;width:950px;height:900px;" src="assets/catal-trench.webp" alt="차탈회위크 발굴 구역의 주거 흔적" decoding="async">
+<span class="canvas-box" aria-hidden="true" style="left:0px;top:0px;width:695px;height:900px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:81px;top:60px;width:550px;height:35px;font-size:clamp(18px,18px,18px);color:#E85C35;font-weight:700;text-align:left"><span>차탈회위크 / 주거 배치</span></div>
+<div class="canvas-text" style="left:78px;top:139px;width:585px;height:153px;font-size:clamp(53px,53px,53px);color:#FFFDF7;font-weight:700;text-align:left"><span>집과 집이<br>맞닿은 정착지</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:84px;top:331px;width:533px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:82px;top:365px;width:550px;height:43px;font-size:clamp(29px,29px,29px);color:#FFFDF7;font-weight:700;text-align:left"><span>밀집한 집</span></div>
+<div class="canvas-text" style="left:82px;top:418px;width:550px;height:93px;font-size:clamp(25px,25px,25px);color:#E2DACD;font-weight:400;text-align:left"><span>유네스코는 주택이 서로 등을 맞대고 있었다고 설명한다.</span></div>
+<div class="canvas-text" style="left:82px;top:551px;width:550px;height:43px;font-size:clamp(29px,29px,29px);color:#FFFDF7;font-weight:700;text-align:left"><span>지붕을 통한 출입</span></div>
+<div class="canvas-text" style="left:82px;top:604px;width:550px;height:93px;font-size:clamp(25px,25px,25px);color:#E2DACD;font-weight:400;text-align:left"><span>일반적인 골목 대신 지붕 위 동선으로 집에 들어갔다.</span></div>
+<div class="canvas-text" style="left:84px;top:784px;width:560px;height:52px;font-size:clamp(21px,21px,21px);color:#C7BEB2;font-weight:400;text-align:left"><span>현재의 발굴 사진. 주거 배치의 일부만 보인다.</span></div></div></div>
+</section>
+<!-- === SLIDE 13 === -->
+<section class="slide" data-page="13" aria-label="13. 한 집 안에 겹친 여러 활동" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><img class="canvas-image" style="left:760px;top:0px;width:840px;height:900px;" src="assets/catal-room.webp" alt="박물관이 복원한 차탈회위크 주택 실내" decoding="async">
+<div class="canvas-text" style="left:83px;top:61px;width:605px;height:35px;font-size:clamp(18px,18px,18px);color:#E85C35;font-weight:700;text-align:left"><span>차탈회위크 / 집의 내부</span></div>
+<div class="canvas-text" style="left:79px;top:149px;width:635px;height:148px;font-size:clamp(54px,54px,54px);color:#1B1A17;font-weight:700;text-align:left"><span>한 집 안에 겹친<br>여러 활동</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:86px;top:326px;width:593px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:84px;top:354px;width:606px;height:42px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>화덕과 작업</span></div>
+<div class="canvas-text" style="left:84px;top:402px;width:606px;height:70px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>화로 가까이에서 음식을 만들고 일상 작업을 했다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:84px;top:489px;width:594px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:84px;top:510px;width:606px;height:42px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>잠과 매장</span></div>
+<div class="canvas-text" style="left:84px;top:558px;width:606px;height:70px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>높게 만든 단은 생활에 쓰였고, 일부 단 아래에는 매장 흔적이 남았다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:84px;top:644px;width:594px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:84px;top:664px;width:606px;height:42px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>저장과 상징</span></div>
+<div class="canvas-text" style="left:84px;top:712px;width:606px;height:69px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>곁방은 물건을 보관하는 곳이었고, 벽에는 그림과 부조가 남았다.</span></div>
+<div class="canvas-text" style="left:85px;top:814px;width:595px;height:38px;font-size:clamp(20px,20px,20px);color:#5C5750;font-weight:400;text-align:left"><span>사진은 박물관 복원 전시다. 세부 배치에는 해석이 포함된다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:1286px;top:51px;width:249px;height:39px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:1298px;top:53px;width:225px;height:34px;font-size:clamp(17px,17px,17px);color:#FFFDF7;font-weight:700;text-align:left"><span>박물관 복원 전시</span></div></div></div>
+</section>
+<!-- === SLIDE 14 === -->
+<section class="slide" data-page="14" aria-label="14. 두 유적에서 읽히는 풍경구조" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>교재와 사례의 연결</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>두 유적에서 읽히는 풍경구조</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>교재의 개념을 그대로 증명하는 대신, 사례에서 확인할 수 있는 공간 관계를 비교한다.</span></div>
+<div class="canvas-text" style="left:90px;top:308px;width:640px;height:62px;font-size:clamp(34px,34px,34px);color:#1B1A17;font-weight:700;text-align:left"><span>핀스방 / 반복적으로 찾는 장소</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:90px;top:382px;width:640px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:90px;top:418px;width:640px;height:235px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>강과 계절적 이동이 캠프의 위치를 정했다.<br>화덕과 도구 흔적은 활동 구역을 보여 준다.<br>이동 생활에도 장소의 사용법이 있었다.</span></div>
+<div class="canvas-text" style="left:845px;top:308px;width:640px;height:62px;font-size:clamp(34px,34px,34px);color:#1B1A17;font-weight:700;text-align:left"><span>차탈회위크 / 오래 머문 장소</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:845px;top:382px;width:640px;height:3px;background:#E85C35"></span>
+<div class="canvas-text" style="left:845px;top:418px;width:640px;height:235px;font-size:clamp(27px,27px,27px);color:#5C5750;font-weight:400;text-align:left"><span>집들이 밀집하고 지붕 위 동선이 이어졌다.<br>한 장소에 머문 시간이 거주층으로 쌓였다.<br>정착은 이웃과 집의 관계를 촘촘히 만들었다.</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:88px;top:721px;width:1410px;height:83px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:115px;top:739px;width:1350px;height:50px;font-size:clamp(27px,27px,27px);color:#FFFDF7;font-weight:700;text-align:left"><span>공통점: 두 생활 방식 모두 자연조건을 읽고 공동체의 활동 공간을 만들었다.</span></div></div></div>
+</section>
+<!-- === SLIDE 15 === -->
+<section class="slide" data-page="15" aria-label="15. 선사적 풍경구조를 어떻게 이해할까?" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:82px;top:58px;width:500px;height:27px;font-size:clamp(17px,17px,17px);color:#E85C35;font-weight:700;text-align:left"><span>결론</span></div>
+<div class="canvas-text" style="left:80px;top:103px;width:1435px;height:77px;font-size:clamp(48px,48px,48px);color:#1B1A17;font-weight:700;text-align:left"><span>선사적 풍경구조를 어떻게 이해할까?</span></div>
+<div class="canvas-text" style="left:84px;top:185px;width:1420px;height:55px;font-size:clamp(25px,25px,25px);color:#5C5750;font-weight:400;text-align:left"><span>도시가 생기기 전에도 자연, 생활, 공동체의 관계는 이미 장소에 나타났다.</span></div>
+<div class="canvas-text" style="left:88px;top:293px;width:252px;height:54px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>자연조건</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:356px;top:350px;width:1130px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:363px;top:290px;width:1115px;height:69px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>강, 지형, 계절은 사람들이 머무를 곳을 고르는 데 영향을 주었다.</span></div>
+<div class="canvas-text" style="left:88px;top:420px;width:252px;height:54px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>이동 생활</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:356px;top:477px;width:1130px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:363px;top:417px;width:1115px;height:69px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>캠프를 반복 이용했고, 화덕과 작업 구역을 구분했다.</span></div>
+<div class="canvas-text" style="left:88px;top:547px;width:252px;height:54px;font-size:clamp(30px,30px,30px);color:#1B1A17;font-weight:700;text-align:left"><span>정착 생활</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:356px;top:604px;width:1130px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:363px;top:544px;width:1115px;height:69px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>집과 이웃의 관계가 누적되면서 공간이 더 밀집했다.</span></div>
+<div class="canvas-text" style="left:88px;top:674px;width:252px;height:54px;font-size:clamp(30px,30px,30px);color:#E85C35;font-weight:700;text-align:left"><span>해석의 한계</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:356px;top:731px;width:1130px;height:1px;background:#C9C0B3"></span>
+<div class="canvas-text" style="left:363px;top:671px;width:1115px;height:69px;font-size:clamp(26px,26px,26px);color:#5C5750;font-weight:400;text-align:left"><span>한 유적이나 교재의 개념을 모든 선사사회에 그대로 적용할 수 없다.</span></div></div></div>
+</section>
+<!-- === SLIDE 16 === -->
+<section class="slide" data-page="16" aria-label="16. 질문과 토론" aria-hidden="true" inert>
+ <div class="frame"><div class="canvas" style="background:#F4F0E7"><div class="canvas-text" style="left:85px;top:73px;width:930px;height:90px;font-size:clamp(63px,63px,63px);color:#1B1A17;font-weight:700;text-align:left"><span>질문과 토론</span></div>
+<div class="canvas-text" style="left:89px;top:191px;width:1410px;height:77px;font-size:clamp(30px,30px,30px);color:#E85C35;font-weight:700;text-align:left"><span>교재의 “소박”은 어떤 공간 관계를 잘 설명하고, 무엇을 놓칠까?</span></div>
+<span class="canvas-box" aria-hidden="true" style="left:90px;top:316px;width:1418px;height:2px;background:#1B1A17"></span>
+<div class="canvas-text" style="left:92px;top:349px;width:790px;height:49px;font-size:clamp(29px,29px,29px);color:#1B1A17;font-weight:700;text-align:left"><span>발표에서 사용한 주요 자료</span></div>
+<div class="canvas-text" style="left:96px;top:425px;width:1390px;height:54px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>교재 『도시 풍경의 이해』, 61–63쪽 「선사적 풍경구조」</span></div>
+<div class="canvas-text" style="left:96px;top:493px;width:1390px;height:54px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>일드프랑스 선사박물관, Pincevent: 순록 사냥꾼의 캠프</span></div>
+<div class="canvas-text" style="left:96px;top:561px;width:1390px;height:54px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site</span></div>
+<div class="canvas-text" style="left:96px;top:629px;width:1390px;height:54px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>차탈회위크 연구 프로젝트, Architecture: 주택 내부의 공간 사용</span></div>
+<div class="canvas-text" style="left:96px;top:697px;width:1390px;height:54px;font-size:clamp(24px,24px,24px);color:#5C5750;font-weight:400;text-align:left"><span>사진의 저작자와 라이선스는 상단의 ‘자료 출처’에서 확인</span></div></div></div>
+</section></main>
+<main class="reading-main" aria-label="슬라이드 내용 읽기"><article class="reading-page" data-page="1" ><div class="reading-kicker">01 / 16</div><h1>선사적 풍경구조</h1><figure><img loading="lazy" src="assets/cover-terrain.webp" alt="선택한 4안의 지형 배경. 검은 공간에서 지형으로 자연스럽게 이어짐" decoding="async"><figcaption>선택한 4안의 지형 배경. 검은 공간에서 지형으로 자연스럽게 이어짐</figcaption></figure><h2>PREHISTORIC LANDSCAPE</h2><p>자연, 인간, 공동체의 초기 공간 관계</p><p>도시 풍경의 이해  ·  풍경구조의 역사적 유형</p><h2>발표자  유상호 (Parpelza)</h2></article>
+<article class="reading-page" data-page="2" hidden><div class="reading-kicker">02 / 16</div><h1>발표의 질문</h1><figure><img loading="lazy" src="assets/irish-camp.webp" alt="아일랜드 국립유산공원의 중석기 캠프 복원 전시" decoding="async"><figcaption>아일랜드 국립유산공원의 중석기 캠프 복원 전시</figcaption></figure><h2>교재에서 출발</h2><p>자연과 인간이 가까웠다는 교재의 설명을 읽는다.</p><h2>두 유적으로 확인</h2><p>핀스방의 계절적 캠프와 차탈회위크의 정착촌을 비교한다.</p></article>
+<article class="reading-page" data-page="3" hidden><div class="reading-kicker">03 / 16</div><h1>교재가 설명하는 선사적 풍경</h1><figure><img loading="lazy" src="assets/prehistoric-story-v4.webp" alt="멀리서 본 선사시대 강변의 채집과 생활 장면. 얼굴은 보이지 않음" decoding="async"><figcaption>멀리서 본 선사시대 강변의 채집과 생활 장면. 얼굴은 보이지 않음</figcaption></figure><p>교재의 세 문장을 실제 생활 장면과 연결해 읽는다.</p><h2>“대지와 인간의 관계는 소박하였다.”</h2><p>자연조건이 생활의 장소 선택과 직접 연결된다는 설명이다.</p><h2>“소박”은 “자유롭고 인간적”이다.</h2><p>이 표현은 교재의 가치 판단이며, 고고학적 사실과 구분해야 한다.</p><h2>자연과 인간의 “감성적 밀착”</h2><p>도식은 두 영역의 큰 중첩으로 그 관계를 나타낸다.</p></article>
+<article class="reading-page" data-page="4" hidden><div class="reading-kicker">04 / 16</div><h1>풍경구조를 읽는 세 가지 질문</h1><p>풍경구조는 아름다운 경치가 아니라 생활이 장소에 남긴 관계를 뜻한다.</p><h2>01</h2><h2>어디에 머물렀는가?</h2><p>물과 먹을거리에 접근할 수 있는 장소를 선택했다.</p><h2>02</h2><h2>그곳을 어떻게 썼는가?</h2><p>거처, 불자리, 도구 제작 구역처럼 활동이 나뉘었다.</p><h2>03</h2><h2>누구와 함께 썼는가?</h2><p>생활의 장소는 집단의 협력과 공유 속에서 유지됐다.</p></article>
+<article class="reading-page" data-page="5" hidden><div class="reading-kicker">05 / 16</div><h1>센강가의 계절적 사냥 캠프</h1><figure><img loading="lazy" src="assets/pincevent-dig.webp" alt="1967년 핀스방 발굴 현장 기록 사진" decoding="async"><figcaption>1967년 핀스방 발굴 현장 기록 사진</figcaption></figure><h2>언제, 어디서</h2><p>약 1만 4천 년 전, 오늘날 프랑스의 센강 유역</p><h2>무엇이 남았나</h2><p>여러 거주층, 화덕, 순록 뼈와 석기 제작 흔적</p><p>발굴 사진 속 유물의 위치를 기록해<br>캠프의 활동 구역을 연구한다.</p></article>
+<article class="reading-page" data-page="6" hidden><div class="reading-kicker">06 / 16</div><h1>왜 같은 강가로 되돌아왔을까?</h1><figure><img loading="lazy" src="assets/pincevent-site.webp" alt="오늘날 핀스방 유적 주변의 조사 현장" decoding="async"><figcaption>오늘날 핀스방 유적 주변의 조사 현장</figcaption></figure><p>센강의 계절 변화와 순록의 이동이 이 장소를 유리하게 만들었다.</p><h2>가을의 강가</h2><p>박물관은 낮아진 강 수위와 얕은 여울을 중요한 조건으로 설명한다.</p><h2>순록의 이동</h2><p>강을 건너는 순록이 느려지는 때에 사냥 집단이 다시 모였다.</p><h2>장소 선택은 자연조건과 생활 전략이 만나는 지점이었다.</h2></article>
+<article class="reading-page" data-page="7" hidden><div class="reading-kicker">07 / 16</div><h1>임시 캠프에도 활동 구역이 있었다</h1><figure><img loading="lazy" src="assets/pincevent-tools.webp" alt="핀스방에서 출토되어 박물관에 전시된 석기" decoding="async"><figcaption>핀스방에서 출토되어 박물관에 전시된 석기</figcaption></figure><p>화덕 주위의 유물 분포는 사람들이 어디서 무엇을 했는지 알려 준다.</p><h2>화덕</h2><p>고기를 익히고 여러 활동의 중심으로 사용했다.</p><h2>도구 제작</h2><p>석기를 만들거나 수리한 흔적이 모여 있다.</p><h2>거처</h2><p>가벼운 주거 흔적과 작업 구역의 관계를 추정한다.</p></article>
+<article class="reading-page" data-page="8" hidden><div class="reading-kicker">08 / 16</div><h1>공동체와 토지의 관계</h1><p>교재는 마르크스의 문장을 통해 자연과 공동체를 분리하지 않는 관점을 제시한다.</p><h2>“토지”는 단순한 재산이 아니라<br>사람들이 함께 살아가는 조건이다.</h2><h2>교재의 해석</h2><p>생활공간과 공동체의 관계를 설명하는 이론적 틀이다.</p><h2>주의: 모든 선사 집단이 같은 토지 소유 방식으로 살았다는 증거는 아니다.</h2></article>
+<article class="reading-page" data-page="9" hidden><div class="reading-kicker">09 / 16</div><h1>교재 도식을 장면으로 읽기</h1><figure><img loading="lazy" src="assets/prehistoric-topdown-camp-v4.webp" alt="지평선이 없는 90도 수직 평면도. 중앙의 거처와 화덕, 주변의 숲과 강을 구분하는 설명 그림" decoding="async"><figcaption>지평선이 없는 90도 수직 평면도. 중앙의 거처와 화덕, 주변의 숲과 강을 구분하는 설명 그림</figcaption></figure><p>자연과 생활 영역의 ‘겹침’을 강가 캠프의 장소 관계로 풀어 본다.</p><h2>강과 여울</h2><p>물과 이동 경로가 캠프의 위치를 정한다.</p><h2>캠프와 화덕</h2><p>거처와 공동 활동이 한곳에 모인다.</p><h2>주변의 자원</h2><p>채집 숲과 동물 이동 구역까지 생활이 이어진다.</p></article>
+<article class="reading-page" data-page="10" hidden><div class="reading-kicker">10 / 16</div><h1>이동과 정착은 공간을 다르게 조직했다</h1><figure><img loading="lazy" src="assets/lejre-camp.webp" alt="덴마크 르예르의 석기시대 캠프 복원 전시" decoding="async"><figcaption>덴마크 르예르의 석기시대 캠프 복원 전시</figcaption></figure><figure><img loading="lazy" src="assets/catal-wide-08.webp" alt="오늘날 차탈회위크 발굴 현장" decoding="async"><figcaption>오늘날 차탈회위크 발굴 현장</figcaption></figure><p>두 사례는 서로 다른 지역과 시대에 속한다. 하나의 직선적 발전 단계로 볼 수 없다.</p><h2>계절적 이용</h2><p>필요한 시기에 머물고 다시 이동한다.</p><h2>장기 정착</h2><p>집을 고쳐 쓰고 이웃 관계가 누적된다.</p></article>
+<article class="reading-page" data-page="11" hidden><div class="reading-kicker">11 / 16</div><h1>오래 이어진 정착의 흔적</h1><figure><img loading="lazy" src="assets/catal-overview.webp" alt="차탈회위크 발굴 구역의 현대 사진" decoding="async"><figcaption>차탈회위크 발굴 구역의 현대 사진</figcaption></figure><h2>장소와 시기</h2><p>오늘날 튀르키예 코니아 평원. 유네스코는 신석기 정착층을 기원전 약 7400–6200년으로 설명한다.</p><h2>발굴이 보여 주는 것</h2><p>집을 다시 짓고 생활의 장소를 계속 사용하면서 거주층이 쌓였다.</p></article>
+<article class="reading-page" data-page="12" hidden><div class="reading-kicker">12 / 16</div><h1>집과 집이 맞닿은 정착지</h1><figure><img loading="lazy" src="assets/catal-trench.webp" alt="차탈회위크 발굴 구역의 주거 흔적" decoding="async"><figcaption>차탈회위크 발굴 구역의 주거 흔적</figcaption></figure><h2>밀집한 집</h2><p>유네스코는 주택이 서로 등을 맞대고 있었다고 설명한다.</p><h2>지붕을 통한 출입</h2><p>일반적인 골목 대신 지붕 위 동선으로 집에 들어갔다.</p><p>현재의 발굴 사진. 주거 배치의 일부만 보인다.</p></article>
+<article class="reading-page" data-page="13" hidden><div class="reading-kicker">13 / 16</div><h1>한 집 안에 겹친 여러 활동</h1><figure><img loading="lazy" src="assets/catal-room.webp" alt="박물관이 복원한 차탈회위크 주택 실내" decoding="async"><figcaption>박물관이 복원한 차탈회위크 주택 실내</figcaption></figure><h2>화덕과 작업</h2><p>화로 가까이에서 음식을 만들고 일상 작업을 했다.</p><h2>잠과 매장</h2><p>높게 만든 단은 생활에 쓰였고, 일부 단 아래에는 매장 흔적이 남았다.</p><h2>저장과 상징</h2><p>곁방은 물건을 보관하는 곳이었고, 벽에는 그림과 부조가 남았다.</p><p>사진은 박물관 복원 전시다. 세부 배치에는 해석이 포함된다.</p></article>
+<article class="reading-page" data-page="14" hidden><div class="reading-kicker">14 / 16</div><h1>두 유적에서 읽히는 풍경구조</h1><p>교재의 개념을 그대로 증명하는 대신, 사례에서 확인할 수 있는 공간 관계를 비교한다.</p><h2>핀스방 / 반복적으로 찾는 장소</h2><p>강과 계절적 이동이 캠프의 위치를 정했다.<br>화덕과 도구 흔적은 활동 구역을 보여 준다.<br>이동 생활에도 장소의 사용법이 있었다.</p><h2>차탈회위크 / 오래 머문 장소</h2><p>집들이 밀집하고 지붕 위 동선이 이어졌다.<br>한 장소에 머문 시간이 거주층으로 쌓였다.<br>정착은 이웃과 집의 관계를 촘촘히 만들었다.</p><h2>공통점: 두 생활 방식 모두 자연조건을 읽고 공동체의 활동 공간을 만들었다.</h2></article>
+<article class="reading-page" data-page="15" hidden><div class="reading-kicker">15 / 16</div><h1>선사적 풍경구조를 어떻게 이해할까?</h1><p>도시가 생기기 전에도 자연, 생활, 공동체의 관계는 이미 장소에 나타났다.</p><h2>자연조건</h2><p>강, 지형, 계절은 사람들이 머무를 곳을 고르는 데 영향을 주었다.</p><h2>이동 생활</h2><p>캠프를 반복 이용했고, 화덕과 작업 구역을 구분했다.</p><h2>정착 생활</h2><p>집과 이웃의 관계가 누적되면서 공간이 더 밀집했다.</p><h2>해석의 한계</h2><p>한 유적이나 교재의 개념을 모든 선사사회에 그대로 적용할 수 없다.</p></article>
+<article class="reading-page" data-page="16" hidden><div class="reading-kicker">16 / 16</div><h1>질문과 토론</h1><h2>교재의 “소박”은 어떤 공간 관계를 잘 설명하고, 무엇을 놓칠까?</h2><h2>발표에서 사용한 주요 자료</h2><p>교재 『도시 풍경의 이해』, 61–63쪽 「선사적 풍경구조」</p><p>일드프랑스 선사박물관, Pincevent: 순록 사냥꾼의 캠프</p><p>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site</p><p>차탈회위크 연구 프로젝트, Architecture: 주택 내부의 공간 사용</p><p>사진의 저작자와 라이선스는 상단의 ‘자료 출처’에서 확인</p></article></main>
+<nav class="navigation" aria-label="슬라이드 이동"><button class="nav-button" id="previous" type="button" aria-label="이전 슬라이드">‹</button><button class="nav-button" id="next" type="button" aria-label="다음 슬라이드">›</button><select class="slide-picker" id="slidePicker" aria-label="페이지 선택"><option value="1">01  선사적 풍경구조</option><option value="2">02  발표의 질문</option><option value="3">03  교재가 설명하는 선사적 풍경</option><option value="4">04  풍경구조를 읽는 세 가지 질문</option><option value="5">05  센강가의 계절적 사냥 캠프</option><option value="6">06  왜 같은 강가로 되돌아왔을까?</option><option value="7">07  임시 캠프에도 활동 구역이 있었다</option><option value="8">08  공동체와 토지의 관계</option><option value="9">09  교재 도식을 장면으로 읽기</option><option value="10">10  이동과 정착은 공간을 다르게 조직했다</option><option value="11">11  오래 이어진 정착의 흔적</option><option value="12">12  집과 집이 맞닿은 정착지</option><option value="13">13  한 집 안에 겹친 여러 활동</option><option value="14">14  두 유적에서 읽히는 풍경구조</option><option value="15">15  선사적 풍경구조를 어떻게 이해할까?</option><option value="16">16  질문과 토론</option></select><div class="nav-dots" aria-label="페이지 바로 가기"><button type="button" class="dot current" data-go="1" aria-label="1. 선사적 풍경구조" aria-current="step"></button><button type="button" class="dot" data-go="2" aria-label="2. 발표의 질문" ></button><button type="button" class="dot" data-go="3" aria-label="3. 교재가 설명하는 선사적 풍경" ></button><button type="button" class="dot" data-go="4" aria-label="4. 풍경구조를 읽는 세 가지 질문" ></button><button type="button" class="dot" data-go="5" aria-label="5. 센강가의 계절적 사냥 캠프" ></button><button type="button" class="dot" data-go="6" aria-label="6. 왜 같은 강가로 되돌아왔을까?" ></button><button type="button" class="dot" data-go="7" aria-label="7. 임시 캠프에도 활동 구역이 있었다" ></button><button type="button" class="dot" data-go="8" aria-label="8. 공동체와 토지의 관계" ></button><button type="button" class="dot" data-go="9" aria-label="9. 교재 도식을 장면으로 읽기" ></button><button type="button" class="dot" data-go="10" aria-label="10. 이동과 정착은 공간을 다르게 조직했다" ></button><button type="button" class="dot" data-go="11" aria-label="11. 오래 이어진 정착의 흔적" ></button><button type="button" class="dot" data-go="12" aria-label="12. 집과 집이 맞닿은 정착지" ></button><button type="button" class="dot" data-go="13" aria-label="13. 한 집 안에 겹친 여러 활동" ></button><button type="button" class="dot" data-go="14" aria-label="14. 두 유적에서 읽히는 풍경구조" ></button><button type="button" class="dot" data-go="15" aria-label="15. 선사적 풍경구조를 어떻게 이해할까?" ></button><button type="button" class="dot" data-go="16" aria-label="16. 질문과 토론" ></button></div><span class="counter" id="counter">01 / 16</span></nav>
+<div class="progress-meter" aria-hidden="true"></div><p class="live-status" aria-live="polite" id="liveStatus"></p>
+<script>
+/* === KEYBOARD, WHEEL, TOUCH AND DEEP LINKS === */
+class SlidePresentation{
+ constructor(){
+  this.pages=[...document.querySelectorAll('.slide')];this.readingPages=[...document.querySelectorAll('.reading-page')];this.current=0;this.wheelTime=0;this.touch=null;this.reading=matchMedia('(max-width:700px) and (orientation:portrait)').matches;
+  document.getElementById('previous').addEventListener('click',()=>this.go(this.current-1));document.getElementById('next').addEventListener('click',()=>this.go(this.current+1));document.getElementById('slidePicker').addEventListener('change',e=>this.go(Number(e.target.value)-1));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>this.go(Number(b.dataset.go)-1)));
+  document.getElementById('modeToggle').addEventListener('click',()=>this.setReading(!this.reading));document.getElementById('fullscreenToggle').addEventListener('click',()=>this.fullscreen());
+  document.addEventListener('keydown',e=>{if(e.target.matches('select,button,a,input,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();this.go(this.current+1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();this.go(this.current-1)}if(e.key==='Home'){e.preventDefault();this.go(0)}if(e.key==='End'){e.preventDefault();this.go(15)}if(e.key.toLowerCase()==='f')this.fullscreen()});
+  document.addEventListener('wheel',e=>{if(this.reading||e.ctrlKey||Math.abs(e.deltaY)<20||e.target.closest('select'))return;e.preventDefault();if(Date.now()-this.wheelTime>650){this.go(this.current+Math.sign(e.deltaY));this.wheelTime=Date.now()}},{passive:false});
+  document.addEventListener('touchstart',e=>{if(e.target.closest('a,button,select'))return;this.touch={x:e.changedTouches[0].clientX,y:e.changedTouches[0].clientY}},{passive:true});document.addEventListener('touchend',e=>{if(!this.touch)return;const dx=e.changedTouches[0].clientX-this.touch.x,dy=e.changedTouches[0].clientY-this.touch.y;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.3)this.go(this.current-Math.sign(dx));this.touch=null},{passive:true});
+  addEventListener('resize',()=>this.fit());addEventListener('hashchange',()=>this.go(this.hashPage(),false));document.addEventListener('fullscreenchange',()=>{document.body.classList.toggle('fullscreen',!!document.fullscreenElement);document.getElementById('fullscreenToggle').textContent=document.fullscreenElement?'전체 화면 종료':'전체 화면';this.fit();this.showControls()});document.addEventListener('pointermove',()=>this.showControls());document.addEventListener('focusin',()=>this.showControls());
+  this.observer=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle('visible',e.isIntersecting)),{threshold:.35});this.pages.forEach(p=>this.observer.observe(p));this.setReading(this.reading);this.go(this.hashPage());document.fonts.ready.then(()=>this.fit());
+ }
+ hashPage(){return Math.max(0,Math.min(15,Number(location.hash.match(/slide-(\d+)/)?.[1]||1)-1))}
+ go(index,update=true){this.current=Math.max(0,Math.min(15,index));this.pages.forEach((p,i)=>{p.classList.toggle('active',i===this.current);p.setAttribute('aria-hidden',String(i!==this.current));p.inert=i!==this.current});this.readingPages.forEach((p,i)=>p.hidden=i!==this.current);document.querySelectorAll('[data-go]').forEach((b,i)=>{b.classList.toggle('current',i===this.current);if(i===this.current)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});document.getElementById('slidePicker').value=String(this.current+1);document.getElementById('counter').textContent=String(this.current+1).padStart(2,'0')+' / 16';document.getElementById('previous').disabled=this.current===0;document.getElementById('next').disabled=this.current===15;document.querySelector('.progress-meter').style.width=((this.current+1)/16*100)+'%';document.getElementById('liveStatus').textContent=this.pages[this.current].getAttribute('aria-label');if(update)history.replaceState(null,'','#slide-'+(this.current+1));if(this.reading)scrollTo({top:0,behavior:'instant'});this.fit();this.preload(this.current+1);}
+ preload(index){this.pages[index]?.querySelectorAll('img').forEach(img=>{const warm=new Image();warm.src=img.src})}
+ fit(){const frame=this.pages[this.current]?.querySelector('.frame');if(frame)document.documentElement.style.setProperty('--scale',Math.min(frame.clientWidth/1600,frame.clientHeight/900))}
+ setReading(value){this.reading=value;document.body.classList.toggle('reading-mode',value);document.querySelector('.stage').inert=value;document.querySelector('.reading-main').inert=!value;document.getElementById('modeToggle').textContent=value?'슬라이드 보기':'읽기 보기';document.getElementById('modeToggle').setAttribute('aria-pressed',String(value));scrollTo({top:0,behavior:'instant'});this.fit()}
+ async fullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else{this.setReading(false);await document.documentElement.requestFullscreen()}}catch{this.showControls()}}
+ showControls(){document.body.classList.add('controls-visible');clearTimeout(this.hideControlsTimer);this.hideControlsTimer=setTimeout(()=>{if(!document.querySelector('.tools:hover,.navigation:hover'))document.body.classList.remove('controls-visible')},2400)}
+}
+window.presentation=new SlidePresentation();
+</script>
+</body></html>

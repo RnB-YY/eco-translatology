@@ -137,3 +137,14 @@ body.surface-open .orbit-stage,body.surface-open .site-header{visibility:hidden;
  .organism{width:210px!important;height:83px!important}.organism b{font-size:15px}.tree-eco{left:20%;bottom:35%}.tree-green{right:6%;bottom:17%}.seed{display:none}.observatory{right:10%;bottom:26%}.flower-main{right:7%;bottom:33%}.flower-small{left:20%;bottom:16%}.crystal-a{right:14%;bottom:33%}.crystal-b{right:6%;bottom:15%}
 }
 @media(max-height:650px){.orbit-copy{top:95px}.orbit-copy h1{font-size:26px}.orbit-intro{font-size:12px}.sky-copy h2{font-size:25px}.sky-copy>p:last-child{font-size:12px}.organism{height:70px!important}.tree-eco{bottom:28%}.tree-green{bottom:9%}}
+
+/* Published landscape-history project; keep all three academic nodes reachable. */
+.research-prehistoric{left:15%;bottom:14%}
+.crystal-prehistoric{left:15%;bottom:13%}
+@media(max-width:820px){
+ .research-prehistoric{left:calc(50% - 105px);bottom:51%}
+ .crystal-prehistoric{left:20%;bottom:51%}
+}
+@media(max-height:650px) and (min-width:821px){
+ .research-prehistoric{left:11%;bottom:11%}
+}

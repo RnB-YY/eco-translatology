@@ -39,6 +39,16 @@ const artifacts = {
       ['查看韩语发表稿', '../green-ageing-study/script.html']
     ]
   },
+  prehistoric: {
+    type: 'LANDSCAPE HISTORY · 景观史课程发表',
+    title: '선사적 풍경구조 · 史前景观结构',
+    meta: '2026 · KOREAN PRESENTATION · 16 PAGES',
+    description: '从课本出发，以法国 Pincevent 季节营地与 Çatalhöyük 定居遗址，理解自然、生活空间与共同体的关系。演示内容与韩语发表稿分别提供在线入口。',
+    links: [
+      ['查看韩语演示', '../prehistoric-landscape/'],
+      ['查看韩语发表稿', '../prehistoric-landscape/script.html']
+    ]
+  },
   sensory: {
     type: 'PORTFOLIO RESEARCH · 作品集研究',
     title: '多感官公共空间',

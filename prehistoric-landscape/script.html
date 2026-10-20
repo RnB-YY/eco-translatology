@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="description" content="선사적 풍경구조 한국어 발표 원고. 슬라이드 16페이지와 개별적으로 연결되는 모바일 읽기 화면.">
+<title>선사적 풍경구조 · Parpelza 발표 원고</title>
+<style>
+@font-face{font-family:'Pretendard';src:url('assets/pretendard.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+body{font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif}.brand{display:inline-block!important;color:inherit;text-decoration:none;white-space:nowrap}.deck-link{font-size:14px;color:var(--muted);white-space:nowrap;text-decoration:none}.deck-link:hover{text-decoration:underline}
+:root{--ink:#1b1a17;--muted:#675e51;--paper:#f4f0e7;--accent:#a85335;--line:#d6cbb8;--type-size:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Pretendard Variable","Apple SD Gothic Neo","Malgun Gothic","Noto Sans CJK KR",sans-serif;word-break:keep-all;overflow-wrap:normal}
+button,select{font:inherit}
+.top{position:sticky;top:0;z-index:10;background:rgba(244,240,231,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:920px;margin:auto;padding:12px 24px;display:flex;align-items:center;gap:16px}
+.brand{font-size:14px;font-weight:700;letter-spacing:.01em;white-space:nowrap}
+.chooser{min-width:0;flex:1;border:0;background:transparent;color:var(--ink);font-size:16px;font-weight:600;padding:8px 4px;outline-offset:3px}
+.count{font-size:14px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.progress{height:3px;background:var(--line)}.progress>span{display:block;height:100%;background:var(--accent);width:6.25%;transition:width .2s}
+main{max-width:920px;min-height:calc(100dvh - 145px);margin:auto;padding:54px 24px 124px}
+.slide-script[hidden]{display:none}
+.section-head{display:flex;align-items:center;gap:13px;color:var(--accent);font-weight:700}
+.number{font-size:18px;letter-spacing:.1em}.section-type{font-size:13px;letter-spacing:.08em}
+h2{margin:22px 0 32px;max-width:760px;font-size:clamp(34px,5vw,57px);line-height:1.23;letter-spacing:-.035em;font-weight:750}
+.speech-body{max-width:770px;font-size:var(--type-size);line-height:1.83;letter-spacing:0}
+.speech{margin:0 0 1.25em}
+details{max-width:770px;margin-top:45px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:15px;line-height:1.55}
+summary{cursor:pointer;font-weight:700}details ul{padding-left:20px}details li{margin:8px 0;overflow-wrap:anywhere}a{color:var(--accent)}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:10;background:rgba(244,240,231,.97);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.bottom-inner{max-width:920px;margin:auto;padding:10px 24px max(10px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px}
+.nav{border:1px solid var(--line);background:transparent;color:var(--ink);padding:12px 17px;border-radius:7px;font-weight:700;cursor:pointer}.nav:disabled{opacity:.35;cursor:default}.next{background:var(--ink);color:white;border-color:var(--ink)}
+.spacer{flex:1}.size{border:0;background:transparent;color:var(--muted);padding:10px;cursor:pointer;font-weight:700}
+button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+@media(max-width:620px){.top-inner{padding:10px 16px;gap:9px}.brand{display:none}.chooser{font-size:15px}.count{font-size:12px}main{padding:43px 22px 115px}.speech-body{font-size:var(--type-size);line-height:1.77}h2{margin-top:16px;margin-bottom:27px}.bottom-inner{padding-left:16px;padding-right:16px}.nav{padding:12px 14px}}
+@media print{.top,.bottom{display:none}main{max-width:none;padding:0}.slide-script,.slide-script[hidden]{display:block!important;break-after:page;padding:18mm 12mm;min-height:260mm}.speech-body{font-size:16pt}h2{font-size:28pt}details{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><a class="brand" href="../universe/">← 개인 행성</a><select class="chooser" aria-label="슬라이드 선택"><option value="1">01  선사적 풍경구조</option>
+<option value="2">02  발표의 질문</option>
+<option value="3">03  교재가 설명하는 선사적 풍경</option>
+<option value="4">04  풍경구조를 읽는 세 가지 질문</option>
+<option value="5">05  센강가의 계절적 사냥 캠프</option>
+<option value="6">06  왜 같은 강가로 되돌아왔을까?</option>
+<option value="7">07  임시 캠프에도 활동 구역이 있었다</option>
+<option value="8">08  공동체와 토지의 관계</option>
+<option value="9">09  교재 도식을 장면으로 읽기</option>
+<option value="10">10  이동과 정착은 공간을 다르게 조직했다</option>
+<option value="11">11  오래 이어진 정착의 흔적</option>
+<option value="12">12  집과 집이 맞닿은 정착지</option>
+<option value="13">13  한 집 안에 겹친 여러 활동</option>
+<option value="14">14  두 유적에서 읽히는 풍경구조</option>
+<option value="15">15  선사적 풍경구조를 어떻게 이해할까?</option>
+<option value="16">16  질문과 토론</option></select><span class="count" aria-live="polite">01 / 16</span></div><div class="progress"><span></span></div></header>
+<main><section class="slide-script" id="slide-1" data-slide="1">
+  <div class="section-head"><span class="number">01</span><span class="section-type">발표 원고</span></div>
+  <h2>선사적 풍경구조</h2>
+  <div class="speech-body"><p class="speech">오늘 발표에서는 교재의 「선사적 풍경구조」를 읽고, 실제 유적 두 곳과 비교하겠습니다. 먼저 프랑스 핀스방의 계절적 캠프를 통해 이동 생활의 공간 구조를 보고, 다음으로 차탈회위크의 정착촌을 살펴봅니다.</p>
+<p class="speech">마지막에는 교재의 ‘자연과 인간의 밀착’이라는 설명이 어디까지 유용한지 정리하겠습니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li></ul></details>
+</section>
+<section class="slide-script" id="slide-2" data-slide="2">
+  <div class="section-head"><span class="number">02</span><span class="section-type">발표 원고</span></div>
+  <h2>발표의 질문</h2>
+  <div class="speech-body"><p class="speech">이 사진은 실제 선사시대 사진이 아니라 아일랜드 국립유산공원의 캠프 복원 전시입니다. 이동 생활에서도 간단한 거처와 작업 장소가 필요했다는 점을 직관적으로 보여 주기 위해 사용했습니다.</p>
+<p class="speech">오늘 발표의 핵심 질문은 도시가 없던 시대에도 사람들이 장소를 선택하고 조직했는가입니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>David Hawgood, CC BY-SA 2.0, <a href="https://commons.wikimedia.org/wiki/File:Hunter_gatherer%27s_camp_at_Irish_National_Heritage_Park_-_geograph.org.uk_-_1252699.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Hunter_gatherer%27s_camp_at_Irish_National_Heritage_Park_-_geograph.org.uk_-_1252699.jpg</a></li><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li></ul></details>
+</section>
+<section class="slide-script" id="slide-3" data-slide="3">
+  <div class="section-head"><span class="number">03</span><span class="section-type">발표 원고</span></div>
+  <h2>교재가 설명하는 선사적 풍경</h2>
+  <div class="speech-body"><p class="speech">교재의 주요 문장 세 개를 같이 보겠습니다. 첫 문장은 대지와 인간의 관계가 소박했다는 것입니다.</p>
+<p class="speech">두 번째는 그 소박함에 자유롭고 인간적이라는 의미를 부여합니다. 세 번째는 자연과 인간이 감성적으로 밀착되어 있었다는 결론입니다.</p>
+<p class="speech">저는 첫째와 셋째를 공간 관계를 설명하는 개념으로 활용합니다. 둘째는 교재 저자의 가치 판단이므로 그대로 객관적 사실로 옮기지 않겠습니다.</p>
+<p class="speech">오른쪽 장면은 특정 유적의 복원이 아니라 이해를 돕기 위해 생성한 해석 이미지입니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li></ul></details>
+</section>
+<section class="slide-script" id="slide-4" data-slide="4">
+  <div class="section-head"><span class="number">04</span><span class="section-type">발표 원고</span></div>
+  <h2>풍경구조를 읽는 세 가지 질문</h2>
+  <div class="speech-body"><p class="speech">발표에서 풍경구조라는 말을 쓸 때는 세 가지 질문을 떠올리면 됩니다. 첫째, 왜 그 장소를 골랐는가.</p>
+<p class="speech">둘째, 그 안에서 어떤 활동을 어디에 배치했는가. 셋째, 그 장소를 누가 어떻게 함께 사용했는가입니다.</p>
+<p class="speech">이 질문을 핀스방과 차탈회위크에 똑같이 적용하겠습니다. 그렇게 보면 이동 생활과 정착 생활의 차이를 비교하기 쉬워집니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li></ul></details>
+</section>
+<section class="slide-script" id="slide-5" data-slide="5">
+  <div class="section-head"><span class="number">05</span><span class="section-type">발표 원고</span></div>
+  <h2>센강가의 계절적 사냥 캠프</h2>
+  <div class="speech-body"><p class="speech">핀스방은 프랑스 센강 유역의 후기 구석기 유적입니다. 일드프랑스 선사박물관 설명에 따르면 약 1만 4천 년 전 순록 사냥꾼들이 이곳을 정기적으로 찾았고, 여러 거주층이 남았습니다.</p>
+<p class="speech">화면의 사진은 1967년 실제 발굴 기록입니다. 고고학자들은 화덕과 뼈, 석기 흔적의 분포를 통해 당시 캠프의 활동 영역을 연구합니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>Marcel G. Lefrancq, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Fouilles_de_Pincevent_1967.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Fouilles_de_Pincevent_1967.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-6" data-slide="6">
+  <div class="section-head"><span class="number">06</span><span class="section-type">발표 원고</span></div>
+  <h2>왜 같은 강가로 되돌아왔을까?</h2>
+  <div class="speech-body"><p class="speech">박물관은 핀스방이 센강의 옛 여울 근처에 있었고, 가을에는 강물이 낮아지면서 순록의 이동을 기다리기 좋은 지점이 되었다고 설명합니다. 이 때문에 사람들은 매년 같은 곳으로 돌아왔을 가능성이 있습니다.</p>
+<p class="speech">여기서 자연은 단순한 경치가 아닙니다. 계절, 강의 수위, 동물의 움직임이 장소 선택과 직접 연결됩니다.</p>
+<p class="speech">사진은 오늘날 조사 현장으로 당시 자연환경을 그대로 보여 주는 것은 아닙니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>Thor19, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:La_Grande-Paroisse_Pincevent.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:La_Grande-Paroisse_Pincevent.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-7" data-slide="7">
+  <div class="section-head"><span class="number">07</span><span class="section-type">발표 원고</span></div>
+  <h2>임시 캠프에도 활동 구역이 있었다</h2>
+  <div class="speech-body"><p class="speech">이 슬라이드는 사진 속 각각의 석기가 바로 특정 구역에 놓였다는 뜻이 아닙니다. 출토 유물의 한 종류를 보여 주는 사진입니다.</p>
+<p class="speech">핀스방에서는 화덕, 석기 조각, 뼈의 분포를 함께 연구해 고기 처리와 도구 제작, 거주 활동이 어디에 있었는지 추정합니다. 따라서 임시 캠프도 아무렇게나 쓰인 공간은 아니었습니다.</p>
+<p class="speech">다만 활동 구역의 해석은 남은 자료를 근거로 한 고고학적 추정이라는 점을 밝혀야 합니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>M.B., CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Lamelles_%C3%A0_dos_-_Pincevent_-_Mus%C3%A9e_Nemours.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Lamelles_%C3%A0_dos_-_Pincevent_-_Mus%C3%A9e_Nemours.jpg</a></li><li>Étiolles archaeological site glossary, Habitat structure, <a href="https://archeologie.culture.gouv.fr/etiolles/en/glossary/habitat-structure" target="_blank" rel="noopener noreferrer">https://archeologie.culture.gouv.fr/etiolles/en/glossary/habitat-structure</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-8" data-slide="8">
+  <div class="section-head"><span class="number">08</span><span class="section-type">발표 원고</span></div>
+  <h2>공동체와 토지의 관계</h2>
+  <div class="speech-body"><p class="speech">교재는 마르크스의 문장을 인용해 토지가 공동체의 삶과 맞닿아 있다는 관점을 소개합니다. 저는 이것을 선사시대의 공간을 읽는 이론적 틀로 사용합니다.</p>
+<p class="speech">그러나 특정 유적의 토지 소유 제도를 이 문장만으로 확정할 수는 없습니다. 예를 들어 핀스방에서는 계절적으로 모여 사용한 장소를 볼 수 있지만, 법적 소유 관계를 직접 알 수는 없습니다.</p>
+<p class="speech">교재의 해석과 유적이 보여 주는 증거를 분리해서 생각해야 합니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-9" data-slide="9">
+  <div class="section-head"><span class="number">09</span><span class="section-type">발표 원고</span></div>
+  <h2>교재 도식을 장면으로 읽기</h2>
+  <div class="speech-body"><p class="speech">교재의 도식은 자연과 생활 영역이 겹친다는 개념을 보여 줍니다. 이를 실제로 이해하기 쉽도록 강가의 계절적 캠프를 바로 위에서 내려다본 평면 장면으로 그렸습니다.</p>
+<p class="speech">화면에서 강과 여울은 물과 이동의 조건이고, 중앙의 거처와 화덕은 공동 활동의 중심이며, 바깥의 숲과 동물 이동 구역도 생활의 범위에 들어갑니다. 이 장면은 특정 유적의 실제 배치가 아니고, 교재의 추상적인 관계를 읽기 위한 생성 이미지입니다.</p>
+<p class="speech">따라서 지형이나 거처의 수를 고고학적 사실로 인용해서는 안 됩니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li></ul></details>
+</section>
+<section class="slide-script" id="slide-10" data-slide="10">
+  <div class="section-head"><span class="number">10</span><span class="section-type">발표 원고</span></div>
+  <h2>이동과 정착은 공간을 다르게 조직했다</h2>
+  <div class="speech-body"><p class="speech">핀스방은 특정 계절에 반복적으로 찾아온 캠프였고, 차탈회위크는 오랜 기간 주택이 축적된 정착 유적입니다. 두 장소를 한 줄로 연결해 ‘전자는 미개하고 후자는 발달했다’고 말하려는 것이 아닙니다.</p>
+<p class="speech">시간과 지역도 다릅니다. 비교의 목적은 생활 방식에 따라 공간의 조직 방식이 달라진다는 점을 보여 주는 것입니다.</p>
+<p class="speech">왼쪽 이미지는 덴마크 야외박물관의 일반적인 석기시대 캠프 복원이며 핀스방 자체의 복원이 아닙니다. 오른쪽은 차탈회위크의 오늘날 발굴 사진입니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li><li>Sintakso, CC0, <a href="https://commons.wikimedia.org/wiki/File:Land_of_Legends_Lejre_01.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Land_of_Legends_Lejre_01.jpg</a></li><li>Murat Özsoy 1958, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk,_7400_BC,_Konya,_Turkey_-_UNESCO_World_Heritage_Site,_08.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk,_7400_BC,_Konya,_Turkey_-_UNESCO_World_Heritage_Site,_08.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-11" data-slide="11">
+  <div class="section-head"><span class="number">11</span><span class="section-type">발표 원고</span></div>
+  <h2>오래 이어진 정착의 흔적</h2>
+  <div class="speech-body"><p class="speech">차탈회위크는 오늘날 튀르키예 코니아 평원의 신석기 유적입니다. 유네스코는 기원전 약 7400년부터 6200년까지의 여러 정착층을 소개합니다.</p>
+<p class="speech">이 유적은 오랜 기간 사람들이 같은 지역에 머물며 집을 쓰고 다시 지었다는 점을 보여 줍니다. 왼쪽 사진은 선사시대 마을의 원형이 아니라 현재의 발굴 현장입니다.</p>
+<p class="speech">정착의 시간적 깊이를 이해하는 사례로 보겠습니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li><li>Verity Cridland, CC BY 2.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_overview.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_overview.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-12" data-slide="12">
+  <div class="section-head"><span class="number">12</span><span class="section-type">발표 원고</span></div>
+  <h2>집과 집이 맞닿은 정착지</h2>
+  <div class="speech-body"><p class="speech">유네스코의 설명에 따르면 차탈회위크의 집들은 서로 등을 맞대고 밀집했으며, 우리가 익숙한 일반적인 거리가 거의 없었습니다. 집으로 들어가는 중요한 경로는 지붕이었습니다.</p>
+<p class="speech">이 구조에서 한 채의 집만으로는 생활 공간을 이해하기 어렵습니다. 집과 이웃집, 지붕 위 동선이 함께 하나의 정착 풍경을 만듭니다.</p>
+<p class="speech">화면은 현재 발굴 구역의 일부입니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li><li>Mark Nesbitt, CC BY 2.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_trench.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_trench.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-13" data-slide="13">
+  <div class="section-head"><span class="number">13</span><span class="section-type">발표 원고</span></div>
+  <h2>한 집 안에 겹친 여러 활동</h2>
+  <div class="speech-body"><p class="speech">이 사진은 박물관이 차탈회위크의 주택 내부를 재현한 전시입니다. 발굴 자료를 바탕으로 했지만 실제 방을 그대로 촬영한 것은 아닙니다.</p>
+<p class="speech">차탈회위크 연구 프로젝트에 따르면 중심 방에는 요리에 쓰는 화로가 있었고, 높게 만든 단은 잠을 자거나 다른 생활 활동에 사용되었습니다. 일부 단 아래에는 사람을 묻었고, 곁방은 물건을 보관하는 공간이었습니다.</p>
+<p class="speech">벽에는 그림과 부조도 남아 있습니다. 이처럼 한 집 안에서도 활동에 따라 자리가 구분되었습니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li><li>Çatalhöyük Research Project, Architecture, <a href="https://www.catalhoyuk.com/node/56" target="_blank" rel="noopener noreferrer">https://www.catalhoyuk.com/node/56</a></li><li>Dosseman, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Museum_of_Anatolian_Civilizations_%C3%87atalh%C3%B6y%C3%BCk_reconstructed_room_in_2011_07.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Museum_of_Anatolian_Civilizations_%C3%87atalh%C3%B6y%C3%BCk_reconstructed_room_in_2011_07.jpg</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-14" data-slide="14">
+  <div class="section-head"><span class="number">14</span><span class="section-type">발표 원고</span></div>
+  <h2>두 유적에서 읽히는 풍경구조</h2>
+  <div class="speech-body"><p class="speech">두 사례에서 공통으로 볼 수 있는 것은 인간이 자연의 조건을 읽고 그 안에 생활 공간을 만든다는 점입니다. 하지만 방식은 다릅니다.</p>
+<p class="speech">핀스방에서는 강과 계절적 동물 이동에 맞춘 반복 이용이 중요합니다. 차탈회위크에서는 집의 밀집과 오랜 정착이 중요합니다.</p>
+<p class="speech">이것은 교재의 큰 개념을 구체적인 질문으로 풀어 주지만, 교재의 ‘감성적 밀착’이라는 표현을 직접 측정한 결과는 아닙니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-15" data-slide="15">
+  <div class="section-head"><span class="number">15</span><span class="section-type">발표 원고</span></div>
+  <h2>선사적 풍경구조를 어떻게 이해할까?</h2>
+  <div class="speech-body"><p class="speech">핵심은 도시 이전의 삶을 공간이 없는 상태로 보지 않는 것입니다. 자연조건은 장소 선택에 영향을 주었고, 이동 생활에도 반복 이용과 활동 구역이 있었습니다.</p>
+<p class="speech">정착 생활에서는 집과 이웃의 관계가 더 촘촘하게 남습니다. 다만 선사시대는 길고 다양하기 때문에 이 두 유적이나 교재의 개념을 모든 사회의 공통 발전 단계처럼 적용해서는 안 됩니다.</p>
+<p class="speech">이것이 오늘 발표의 결론입니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li></ul></details>
+</section>
+<section class="slide-script" id="slide-16" data-slide="16">
+  <div class="section-head"><span class="number">16</span><span class="section-type">발표 원고</span></div>
+  <h2>질문과 토론</h2>
+  <div class="speech-body"><p class="speech">발표를 마치겠습니다. 질문을 받기 전에 함께 생각해 볼 점은 교재의 ‘소박’이라는 표현입니다.</p>
+<p class="speech">이 말이 자연과 생활의 가까움을 잘 보여 주는 면은 있지만, 실제 선사사회의 복잡성과 차이를 너무 단순하게 만들 위험도 있습니다. 사진은 Wikimedia Commons에서 확인한 원본을 사용했고, 복원 전시와 현재 발굴 사진을 화면에 각각 표시했습니다.</p></div>
+  <details><summary>자료 및 이미지 출처</summary><ul><li>교재 『도시 풍경의 이해』, 61–63쪽, 「선사적 풍경구조」</li><li>Musée de Préhistoire Île-de-France, Pincevent, un campement de chasseurs de rennes, <a href="https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes" target="_blank" rel="noopener noreferrer">https://www.musee-prehistoire-idf.fr/fr/pincevent-un-campement-de-chasseurs-de-rennes</a></li><li>UNESCO World Heritage Centre, Çatalhöyük Neolithic Site, <a href="https://whc.unesco.org/en/list/1405" target="_blank" rel="noopener noreferrer">https://whc.unesco.org/en/list/1405</a></li><li>David Hawgood, CC BY-SA 2.0, <a href="https://commons.wikimedia.org/wiki/File:Hunter_gatherer%27s_camp_at_Irish_National_Heritage_Park_-_geograph.org.uk_-_1252699.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Hunter_gatherer%27s_camp_at_Irish_National_Heritage_Park_-_geograph.org.uk_-_1252699.jpg</a></li><li>Sintakso, CC0, <a href="https://commons.wikimedia.org/wiki/File:Land_of_Legends_Lejre_01.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Land_of_Legends_Lejre_01.jpg</a></li><li>Marcel G. Lefrancq, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Fouilles_de_Pincevent_1967.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Fouilles_de_Pincevent_1967.jpg</a></li><li>Thor19, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:La_Grande-Paroisse_Pincevent.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:La_Grande-Paroisse_Pincevent.jpg</a></li><li>M.B., CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Lamelles_%C3%A0_dos_-_Pincevent_-_Mus%C3%A9e_Nemours.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Lamelles_%C3%A0_dos_-_Pincevent_-_Mus%C3%A9e_Nemours.jpg</a></li><li>Verity Cridland, CC BY 2.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_overview.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_overview.jpg</a></li><li>Mark Nesbitt, CC BY 2.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_trench.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk_trench.jpg</a></li><li>Dosseman, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Museum_of_Anatolian_Civilizations_%C3%87atalh%C3%B6y%C3%BCk_reconstructed_room_in_2011_07.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:Museum_of_Anatolian_Civilizations_%C3%87atalh%C3%B6y%C3%BCk_reconstructed_room_in_2011_07.jpg</a></li><li>Murat Özsoy 1958, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk,_7400_BC,_Konya,_Turkey_-_UNESCO_World_Heritage_Site,_08.jpg" target="_blank" rel="noopener noreferrer">https://commons.wikimedia.org/wiki/File:%C3%87atalh%C3%B6y%C3%BCk,_7400_BC,_Konya,_Turkey_-_UNESCO_World_Heritage_Site,_08.jpg</a></li></ul></details>
+</section></main>
+<nav class="bottom" aria-label="원고 이동"><div class="bottom-inner"><button class="nav previous" type="button">이전</button><button class="nav next" type="button">다음</button><span class="spacer"></span><a class="deck-link" id="connectedSlide" href="./#slide-1" target="_blank" rel="noopener">슬라이드 ↗</a><button class="size smaller" type="button" aria-label="글자 작게">A−</button><button class="size larger" type="button" aria-label="글자 크게">A＋</button></div></nav>
+<script>history.scrollRestoration='manual';
+const pages=[...document.querySelectorAll('.slide-script')],choose=document.querySelector('.chooser'),counter=document.querySelector('.count'),bar=document.querySelector('.progress span'),prev=document.querySelector('.previous'),next=document.querySelector('.next');
+let current=1;
+function show(n){current=Math.min(16,Math.max(1,Number(n)||1));pages.forEach((p,i)=>p.hidden=i!==current-1);choose.value=String(current);document.getElementById('connectedSlide').href='./#slide-'+current;counter.textContent=String(current).padStart(2,'0')+' / 16';bar.style.width=(current/16*100)+'%';prev.disabled=current===1;next.disabled=current===16;history.replaceState(null,'','#slide-'+current);scrollTo({top:0,behavior:'instant'})}
+choose.addEventListener('change',e=>show(e.target.value));prev.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));
+document.addEventListener('keydown',e=>{if(e.target.matches('select,button,summary'))return;if(e.key==='ArrowRight'||e.key==='PageDown')show(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(current-1)});
+let size=22;document.querySelector('.smaller').addEventListener('click',()=>{size=Math.max(18,size-2);document.documentElement.style.setProperty('--type-size',size+'px')});document.querySelector('.larger').addEventListener('click',()=>{size=Math.min(34,size+2);document.documentElement.style.setProperty('--type-size',size+'px')});
+show(location.hash.match(/slide-(\d+)/)?.[1]||1);
+
+function settleReader(){scrollTo({top:0,behavior:'instant'});requestAnimationFrame(()=>scrollTo({top:0,behavior:'instant'}))}addEventListener('load',settleReader);document.fonts.ready.then(settleReader);
+</script>
+</body>
+</html>
