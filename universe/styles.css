@@ -110,10 +110,10 @@ body[data-motion="reduced"] .planet-orbit,body[data-motion="reduced"] .planet,bo
 .planet-face{background:radial-gradient(circle at 28% 23%,#c6c5ab,#758889 40%,#17242e 76%);box-shadow:inset -20px -12px 24px #000c,0 0 2px 1px #b9e7ef60,0 15px 30px #0009}
 .planet-face i{inset:0;width:100%!important;height:100%!important;border-radius:50%;background:url('assets/atmosphere.svg') center/cover!important;mix-blend-mode:soft-light;opacity:.9;box-shadow:none!important;transform:rotate(-18deg)}
 .planet-face:after{inset:0;background:radial-gradient(circle at 30% 25%,transparent 18%,#0003 51%,#000e 91%);filter:none}
-.planet-about .planet-face{background:radial-gradient(circle at 25% 25%,#cfb79b,#8d6b50 47%,#282635 79%)}
-.planet-academic .planet-face{background:radial-gradient(circle at 25% 25%,#becdd0,#427a85 40%,#182c3c 79%)}
-.planet-portfolio .planet-face{background:radial-gradient(circle at 25% 25%,#ddc69b,#a27a54 45%,#302836 79%)}
-.planet-archive .planet-face{background:radial-gradient(circle at 25% 25%,#b9d6df,#5c8eaa 45%,#152337 79%)}
+.planet-about .planet-face{background:radial-gradient(circle at 25% 25%,#edc48d,#a4693f 47%,#3c2927 79%)}
+.planet-academic .planet-face{background:radial-gradient(circle at 25% 25%,#c4d3a5,#537e5e 40%,#162f2d 79%)}
+.planet-portfolio .planet-face{background:radial-gradient(circle at 25% 25%,#c0dac2,#579c91 45%,#183f4a 79%)}
+.planet-archive .planet-face{background:radial-gradient(circle at 25% 25%,#e0f3f6,#81b2ce 45%,#203c5e 79%)}
 .planet-label{opacity:1}.planet-label b{font-size:13px;text-shadow:0 2px 9px #000}.planet-label small{color:#a0aeb8}
 .system{left:66%;width:min(79vw,1050px)}
 .orbit-ring{height:calc(var(--ring-size)*.46);width:var(--ring-size);transform:translate(-50%,-50%) rotate(-22deg);border-color:#91becb30;box-shadow:0 0 0 5px #8cc2d806,0 0 0 14px #8cc2d804,inset 0 0 0 7px #8cc2d806}
@@ -121,19 +121,27 @@ body[data-motion="reduced"] .planet-orbit,body[data-motion="reduced"] .planet,bo
 .star{width:9%}.star-core{background:radial-gradient(circle at 42% 40%,#fffef0,#fff6b7 28%,#ffbf58 52%,#cb492b 75%);box-shadow:0 0 32px #ffac6599,0 0 90px #fa724950,0 0 160px #ec633320}.star:before{inset:-70%;transform:scaleY(.35) rotate(-22deg);animation:none;border-color:#ffb46c44}.star:after{inset:-120%;animation:none;transform:scaleY(.4) rotate(-22deg);border-color:#b1d4e524}.star-name{font-size:11px}.star-sub{top:140%}
 .orbit-copy{width:31vw}.orbit-copy h1{font-size:clamp(30px,3.2vw,48px);line-height:1.4}.orbit-intro{font-size:14px}
 body.surface-open .orbit-stage,body.surface-open .site-header{visibility:hidden;pointer-events:none}
-.world{background:#142822 url('assets/forest-reference.png') center 52%/cover no-repeat}
-.world:before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#03110ee8 0%,#03110e66 45%,#03110e15 72%),linear-gradient(0deg,#03110eb0,transparent 40%,#03110e70)}
-.world:after,.horizon{display:none}.world-about{background-position:40% 22%}.world-portfolio{background-position:50% 78%}.world-archive{background-position:65% 55%}
-.sky-copy{top:18vh;width:38vw}.sky-copy h2{font-size:clamp(28px,3.8vw,54px);line-height:1.35}.sky-copy>p:last-child{color:#e0e8dbbf;text-shadow:0 1px 6px #000}.surface-header{background:linear-gradient(#03100d90,transparent)}
-.organism{width:230px!important;height:90px!important;transform:none!important;border:0;text-align:left;padding:14px 15px 14px 32px;background:linear-gradient(90deg,#061912d9,#0619127a);border-bottom:1px solid #b4ceb73d;backdrop-filter:blur(8px)}
-.organism>span{display:none!important}.organism:before{content:'';position:absolute;left:-34px;top:42px;width:54px;height:1px;background:#d5dfc1a0}.organism:after{content:''!important;position:absolute!important;left:-39px!important;top:38px!important;bottom:auto!important;width:9px!important;height:9px!important;border:1px solid #e2eed3;border-radius:50%;background:#a7ba8d!important;box-shadow:0 0 18px #bddea0}
+.surface-shell{--surface-accent:#c3dea2;--node-start:#061912e0;--node-end:#0619129c;--node-hover:#112d24ed;--node-border:#b4ceb74d;--header-shade:#03100d90}
+.surface-shell[data-biome="about"]{--surface-accent:#edc291;--node-start:#2c1a13e8;--node-end:#362117ac;--node-hover:#4b2b1fed;--node-border:#ecc89660;--header-shade:#21130d9c}
+.surface-shell[data-biome="portfolio"]{--surface-accent:#cce4cb;--node-start:#0a2929e6;--node-end:#123c379e;--node-hover:#1b4841ed;--node-border:#c8e7d15c;--header-shade:#0b232a94}
+.surface-shell[data-biome="archive"]{--surface-accent:#c4e6f6;--node-start:#0c253be6;--node-end:#193c55b5;--node-hover:#244d69ed;--node-border:#d5ecf66b;--header-shade:#10263b9e}
+.world{background-color:var(--scene-base,#142822);background-image:var(--scene-image);background-position:var(--scene-position,center);background-size:cover;background-repeat:no-repeat}
+.world-about{--scene-image:url('assets/world-desert-v1.webp');--scene-position:50% 52%;--scene-mobile-position:48% center;--scene-base:#46301e;--scene-shade:#1c100bea;--scene-mid:#28160d40;--scene-edge:#21140c80}
+.world-academic{--scene-image:url('assets/world-rainforest-v1.webp');--scene-position:center 52%;--scene-mobile-position:53% center;--scene-shade:#03110ee8;--scene-mid:#03110e66;--scene-edge:#03110e90}
+.world-portfolio{--scene-image:url('assets/world-wetland-v1.webp');--scene-position:50% 54%;--scene-mobile-position:54% center;--scene-base:#284540;--scene-shade:#061c22e8;--scene-mid:#0b272d38;--scene-edge:#0b252879}
+.world-archive{--scene-image:url('assets/world-glacier-v1.webp');--scene-position:50% 53%;--scene-mobile-position:53% center;--scene-base:#19374c;--scene-shade:#071a2be6;--scene-mid:#12384a3b;--scene-edge:#0d293d88}
+.world:before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,var(--scene-shade) 0%,var(--scene-mid) 45%,transparent 76%),linear-gradient(0deg,var(--scene-edge),transparent 42%,var(--scene-edge))}
+.world:after,.horizon{display:none}
+.sky-copy{top:18vh;width:38vw}.sky-copy h2{font-size:clamp(28px,3.8vw,54px);line-height:1.35;text-shadow:0 2px 20px #0005}.sky-copy>p:last-child{color:#f0ece1d9;text-shadow:0 1px 8px #0008}.world .eyebrow{color:var(--surface-accent)}.surface-header{background:linear-gradient(var(--header-shade),transparent)}.return-button span{color:var(--surface-accent)}.surface-legend i{background:var(--surface-accent);box-shadow:0 0 12px var(--surface-accent)}
+.organism{width:230px!important;height:90px!important;transform:none!important;border:0;text-align:left;padding:14px 15px 14px 32px;background:linear-gradient(90deg,var(--node-start),var(--node-end));border-bottom:1px solid var(--node-border);backdrop-filter:blur(8px)}
+.organism>span{display:none!important}.organism:before{content:'';position:absolute;left:-34px;top:42px;width:54px;height:1px;background:var(--surface-accent)}.organism:after{content:''!important;position:absolute!important;left:-39px!important;top:38px!important;bottom:auto!important;width:9px!important;height:9px!important;border:1px solid var(--surface-accent);border-radius:50%;background:var(--surface-accent)!important;box-shadow:0 0 18px var(--surface-accent)}
 .organism b,.organism small,.tree-green b,.tree-green small{position:static!important;display:block;text-align:left;white-space:normal}.organism b{font-size:16px;line-height:1.6}.organism small{font-size:9px;margin-top:6px;letter-spacing:.1em}
 .tree-eco{left:45%;bottom:34%}.tree-green{left:auto;right:6%;bottom:18%}.seed{left:15%;bottom:14%;width:180px!important}.observatory{right:18%;bottom:28%}.flower-main{right:8%;bottom:30%}.flower-small{left:38%;bottom:13%}.crystal-a{right:33%;bottom:31%}.crystal-b{right:7%;bottom:14%}
-.organism:hover{background:#112d24e0;border-color:#dcefc0}.surface-legend small{display:none}
+.organism:hover{background:var(--node-hover);border-color:var(--surface-accent)}.organism:hover b,.organism:focus-visible b{color:var(--surface-accent)}.surface-legend small{display:none}
 @media(max-width:820px){
  .quiet-button{display:block;padding:0 9px;font-size:10px}.identity-mark{display:none}.header-actions{gap:5px}.identity b{font-size:10px}
  .orbit-copy{width:auto;top:95px}.orbit-copy h1{font-size:32px}.orbit-intro{max-width:330px;font-size:13px}.system{left:50%;top:65%;width:92vw}.planet{width:47px;height:47px}.star{width:13%}.planet-label b{font-size:11px}.planet-label{top:110%}.ring-4{width:91%;height:41.86%}
- .sky-copy{top:100px;width:auto;left:23px;right:23px}.sky-copy h2{font-size:32px}.sky-copy>p:last-child{font-size:13px;max-width:300px}.world{background-position:53% center}
+ .sky-copy{top:100px;width:auto;left:23px;right:23px}.sky-copy h2{font-size:32px}.sky-copy>p:last-child{font-size:13px;max-width:300px}.world{background-position:var(--scene-mobile-position,center)}
  .organism{width:210px!important;height:83px!important}.organism b{font-size:15px}.tree-eco{left:20%;bottom:35%}.tree-green{right:6%;bottom:17%}.seed{display:none}.observatory{right:10%;bottom:26%}.flower-main{right:7%;bottom:33%}.flower-small{left:20%;bottom:16%}.crystal-a{right:14%;bottom:33%}.crystal-b{right:6%;bottom:15%}
 }
 @media(max-height:650px){.orbit-copy{top:95px}.orbit-copy h1{font-size:26px}.orbit-intro{font-size:12px}.sky-copy h2{font-size:25px}.sky-copy>p:last-child{font-size:12px}.organism{height:70px!important}.tree-eco{bottom:28%}.tree-green{bottom:9%}}

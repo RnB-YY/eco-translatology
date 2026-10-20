@@ -18,6 +18,24 @@ const worlds = {
   archive: 'STRATA–04'
 };
 
+const biomeAssets = {
+  about: 'assets/world-desert-v1.webp',
+  academic: 'assets/world-rainforest-v1.webp',
+  portfolio: 'assets/world-wetland-v1.webp',
+  archive: 'assets/world-glacier-v1.webp'
+};
+const biomeLoads = new Map();
+let worldVisit = 0;
+
+function loadBiome(name) {
+  if (!biomeLoads.has(name)) {
+    const scene = new Image();
+    scene.src = biomeAssets[name];
+    biomeLoads.set(name, scene.decode().catch(() => {}));
+  }
+  return biomeLoads.get(name);
+}
+
 const artifacts = {
   eco: {
     type: 'ACADEMIC PRESENTATION · 学术发表',
@@ -77,10 +95,15 @@ function pauseOrbits(paused) {
 }
 
 function openWorld(name) {
+  if (!worlds[name]) return;
+  const visit = ++worldVisit;
   closeCatalogue();
   pauseOrbits(true);
   body.classList.add('is-traveling');
-  window.setTimeout(() => {
+  const travel = new Promise(resolve => window.setTimeout(resolve, body.dataset.motion === 'reduced' ? 0 : 560));
+  Promise.all([loadBiome(name), travel]).then(() => {
+    if (visit !== worldVisit) return;
+    surfaceShell.dataset.biome = name;
     document.querySelectorAll('[data-world-panel]').forEach(panel => {
       const active = panel.dataset.worldPanel === name;
       panel.classList.toggle('is-active', active);
@@ -91,10 +114,12 @@ function openWorld(name) {
     surfaceShell.setAttribute('aria-hidden', 'false');
     body.classList.remove('is-traveling');
     returnOrbit.focus({preventScroll:true});
-  }, 560);
+  });
 }
 
 function closeWorld() {
+  worldVisit++;
+  body.classList.remove('is-traveling');
   if (artifactPanel.open) artifactPanel.close();
   surfaceShell.classList.remove('is-visible');
   surfaceShell.setAttribute('aria-hidden', 'true');
@@ -150,7 +175,11 @@ function closeCatalogue() {
   if (body.dataset.motion !== 'reduced' && !surfaceShell.classList.contains('is-visible')) pauseOrbits(false);
 }
 
-document.querySelectorAll('[data-world]').forEach(button => button.addEventListener('click', () => openWorld(button.dataset.world)));
+document.querySelectorAll('[data-world]').forEach(button => {
+  button.addEventListener('click', () => openWorld(button.dataset.world));
+  button.addEventListener('pointerenter', () => loadBiome(button.dataset.world), {once:true});
+  button.addEventListener('focus', () => loadBiome(button.dataset.world), {once:true});
+});
 document.querySelectorAll('[data-artifact]').forEach(button => button.addEventListener('click', () => openArtifact(button.dataset.artifact)));
 returnOrbit.addEventListener('click', closeWorld);
 artifactClose.addEventListener('click', () => artifactPanel.close());
